@@ -11,19 +11,8 @@
 #define CSIMENU_FLAG 3
 #define RUN_FLAG 4
 #define FLASH_MEMORY_FLAG 2
-//	一级菜单
-#define ROWS 4
-#define menu_limit0 2
-#define menu_limit1 1
-#define menu_limit2 1
-#define menu_limit3 1
 //	摄像头
 #define EFF_ROW 54
-//	菜单属性编号
-#define MENU_SWITCH 0
-#define PARASET_PID 1
-#define PARASET_OPER 2
-#define MONITOR_MENU 3
 //	flash参数存储
 #define FLASH_NUM 11
 #define FLASH_NUM1 11
@@ -88,8 +77,8 @@ extern unsigned char bend_bias[];
 extern void(*ctrl_pfc[])(void);
 extern void(*ctrl_pfc_alter1[])(void);
 //	模糊PID
-extern float form[7][7];
-extern float es[7], ecs[7];
+//extern float form[7][7];
+//extern float es[7], ecs[7];
 //	一号代码
 extern short ring_lefbias, ring_rigbias;
 extern short ring_outbias;
@@ -137,7 +126,6 @@ extern void(*flash_memory_write_pfc[])(unsigned char, unsigned char);
 /*======================*/
 //	一级菜单
 extern unsigned char menu_index;
-extern unsigned char menu[ROWS];
 extern unsigned char nom[128];
 //	标志位
 extern unsigned char fixedflag;

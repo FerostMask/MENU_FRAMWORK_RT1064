@@ -66,8 +66,8 @@ char folc_flag, cooling_flag = 0, ring_out_flag = 0;
 unsigned char folrow_f = 63;
 unsigned char ctrl_pointer = 0, dir_run_out;
 //	模糊PID
-float form[7][7];
-float es[7], ecs[7];
+//float form[7][7];
+//float es[7], ecs[7];
 //	一号代码
 short ring_lefbias = -17, ring_rigbias = 0;
 short ring_outbias = -17;
@@ -86,7 +86,6 @@ unsigned short point_folrow;
 //	汉字数组
 unsigned char nom[128];
 //	一级菜单
-unsigned char menu[ROWS] = {0, 0, 0, 0};
 unsigned char menu_level;
 unsigned char menu_index = 0;
 //	二级菜单

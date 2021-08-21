@@ -1788,6 +1788,16 @@
               <FileType>1</FileType>
               <FilePath>..\..\Libraries\fontlib.c</FilePath>
             </File>
+            <File>
+              <FileName>menu_2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CODE\menu_2.c</FilePath>
+            </File>
+            <File>
+              <FileName>menu_2init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CODE\menu_2init.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -3572,6 +3582,16 @@
               <FileName>fontlib.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Libraries\fontlib.c</FilePath>
+            </File>
+            <File>
+              <FileName>menu_2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CODE\menu_2.c</FilePath>
+            </File>
+            <File>
+              <FileName>menu_2init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CODE\menu_2init.c</FilePath>
             </File>
           </Files>
         </Group>

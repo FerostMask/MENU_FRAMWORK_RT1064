@@ -9,6 +9,16 @@
 #include "zf_gpio.h"
 #include "SEEKFREE_IPS200_PARALLEL8.h"
 /*--------------------------------------------------------------*/
+/* 							 变量定义 							*/
+/*==============================================================*/
+//	菜单数组
+unsigned char menu[ROWS] = {0, 0, 0, 0};
+//	阈值数组
+unsigned char colimit[ROWS] = { 2,
+								1,
+								1,
+								1 };
+/*--------------------------------------------------------------*/
 /* 							 函数定义 							*/
 /*==============================================================*/
 
@@ -132,19 +142,6 @@ void menu_display(void){
 	ips200_display_chinese(0, 304, 16, nom, info(show_index[3], menu[show_index[3]]), 0xB6DB);
 }
 /*------------------------------*/
-/*		 菜单阈值限制模块		*/
-/*==============================*/
-static char menu_limit(char index, char num){
-//	限制列索引值
-	switch(index){
-		case MENU_SWITCH:if(num<menu_limit0) return 1;break;
-		case PARASET_PID:if(num<menu_limit1) return 1;break;
-		case PARASET_OPER:if(num<menu_limit2) return 1;break;
-		case MONITOR_MENU:if(num<menu_limit3) return 1;break;
-	}
-	return 0;
-}
-/*------------------------------*/
 /*		 一级菜单事件模块		*/
 /*==============================*/
 void menu_select(unsigned char event){
@@ -153,7 +150,7 @@ void menu_select(unsigned char event){
 	//	菜单事件分支
 		switch(event){
 			case 6://右按键
-				if(menu_limit(menu_index, menu[menu_index])) menu[menu_index]++;
+				if(menu[menu_index] < colimit[menu_index]) menu[menu_index]++;
 				else return;
 				break;
 			
@@ -174,7 +171,7 @@ void menu_select(unsigned char event){
 			
 			case 1://确定键
 			//	初始化二级菜单
-//				menu2_init();
+				menu2_init();
 //				menu2_display();
 				menu_level = 1;
 				return;
