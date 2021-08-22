@@ -69,37 +69,37 @@ void GPIO2_Combined_0_15_IRQHandler(void){
 	systick_delay_us(20000);
 //	按键1
     if(GET_GPIO_FLAG(KEY1)){
-		menu_select(1);
+		menu_pfc[menu_level](1);
 		CLEAR_GPIO_FLAG(KEY1);//清除中断标志位
 		while(!gpio_get(KEY1));
     }
 //	按键2	
     if(GET_GPIO_FLAG(KEY2)){
-		menu_select(2);
+		menu_pfc[menu_level](2);
 		CLEAR_GPIO_FLAG(KEY2);
 		while(!gpio_get(KEY2));
     } 
 //	按键3
     if(GET_GPIO_FLAG(KEY3)){
-		menu_select(3);
+		menu_pfc[menu_level](3);
         CLEAR_GPIO_FLAG(KEY3);
 		while(!gpio_get(KEY3));
     } 
 //	按键4
     if(GET_GPIO_FLAG(KEY4)){
-		menu_select(4);
+		menu_pfc[menu_level](4);
         CLEAR_GPIO_FLAG(KEY4);
 		while(!gpio_get(KEY4));
     } 
 //	按键5
     if(GET_GPIO_FLAG(KEY5)){
-		menu_select(5);
+		menu_pfc[menu_level](5);
 		CLEAR_GPIO_FLAG(KEY5);
 		while(!gpio_get(KEY5));
     } 
 //	按键6
     if(GET_GPIO_FLAG(KEY6)){
-		menu_select(6);
+		menu_pfc[menu_level](6);
         CLEAR_GPIO_FLAG(KEY6);
 		while(!gpio_get(KEY6));
     } 

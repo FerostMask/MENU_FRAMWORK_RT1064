@@ -8,5 +8,5 @@
 /*======================================================*/
 extern char(*amenu2_init_pfc[])(char);
 extern char dis_str;
-extern char menustr[40];
+extern char menustr[20];
 #endif

@@ -14,10 +14,10 @@
 //	菜单数组
 unsigned char menu[ROWS] = {0, 0, 0, 0};
 //	阈值数组
-unsigned char colimit[ROWS] = { 2,
-								1,
-								1,
-								1 };
+unsigned char colimit[ROWS] = { 1,
+								2,
+								2,
+								2 };
 /*--------------------------------------------------------------*/
 /* 							 函数定义 							*/
 /*==============================================================*/
@@ -150,7 +150,7 @@ void menu_select(unsigned char event){
 	//	菜单事件分支
 		switch(event){
 			case 6://右按键
-				if(menu[menu_index] < colimit[menu_index]) menu[menu_index]++;
+				if(menu[menu_index] < (colimit[menu_index]-1)) menu[menu_index]++;
 				else return;
 				break;
 			
@@ -172,7 +172,6 @@ void menu_select(unsigned char event){
 			case 1://确定键
 			//	初始化二级菜单
 				menu2_init();
-//				menu2_display();
 				menu_level = 1;
 				return;
 			case 3://返回键

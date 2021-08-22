@@ -23,8 +23,9 @@ char init_model_mode0(char index){//	数值修改菜单模板
 		//	菜单属性
 			menu2_mode = 0;
 			menu2_limit = 0;
+			magflag = 1;
 		//	修改数值的地址
-			floatvalue0 = &cam_steering.Kp;
+			floatvalue[0] = &cam_steering.Kp;
 			shortvalue0 = &spd;
 			return 0;
 	//	菜单名称初始化
@@ -43,7 +44,7 @@ char init_model_mode0(char index){//	数值修改菜单模板
 /*------------------------------*/
 /*		   	 图像显示			*/
 /*==============================*/
-char menu2_imgdisplay(char index){//	数值修改菜单模板
+char menu2_imgdisplay(char index){
 //	变量定义及初始化
 	register unsigned char i;
 	dis_str = 0;
@@ -51,7 +52,7 @@ char menu2_imgdisplay(char index){//	数值修改菜单模板
 	switch(index){
 	//	菜单属性初始化
 		case 0:
-			menu2_mode = PARASET;
+			menu2_mode = PARASET_F;
 			menu2_limit = 3;
 			return 0;
 	//	菜单名称初始化
@@ -76,11 +77,41 @@ char menu2_imgdisplay(char index){//	数值修改菜单模板
 	}
 	return 0;
 }
+/*------------------------------*/
+/*		   	 转向PID			*/
+/*==============================*/
+char menu2_steeringPID(char index){
+//	变量定义及初始化
+	register unsigned char i;
+	dis_str = 1;
+//	信息索引
+	switch(index){
+	//	菜单属性初始化
+		case 0:
+		//	菜单属性
+			menu2_mode = PARASET_F;
+			menu2_limit = 2;
+			magflag = 1;
+		//	修改数值的地址
+			floatvalue[0] = &cam_steering.Kp;
+			floatvalue[1] = &cam_steering.Kd;
+			return 0;
+	//	菜单名称初始化
+		case 1:
+			strcpy(menustr, "Kp");
+			return 0;
+		case 2:
+			strcpy(menustr, "Kd");
+			return 0;
+	}
+	return 0;
+}
 /*--------------------------------------------------------------*/
 /* 							 变量定义 							*/
 /*==============================================================*/
 //	初始化函数指针数组
-char(*amenu2_init_pfc[])(char) = {menu2_imgdisplay};
+char(*amenu2_init_pfc[])(char) = {	menu2_imgdisplay, 
+									menu2_steeringPID	};
 //	变量定义
 char dis_str = 0;
-char menustr[40];
+char menustr[20];

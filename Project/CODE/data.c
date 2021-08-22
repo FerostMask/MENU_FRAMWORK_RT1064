@@ -4,6 +4,8 @@
 #include "data.h"
 #include "CAM.h"
 #include "ctrl.h"
+#include "menu.h"
+#include "menu_2.h"
 #include "ctrl_alter1.h"
 /*--------------------------------------------------------------*/
 /*							  宏定义							*/
@@ -98,8 +100,8 @@ unsigned char monitorflag = 0;//监视器
 unsigned char csimenu_flag[CSIMENU_FLAG] = {0, 0, 0};//摄像头
 unsigned char run_flag[RUN_FLAG] = {0, 0, 0, 0};//发车
 unsigned char flash_memory_flag[RUN_FLAG] = {0, 0};//数据存储
-////	指针函数
-//void(*menu_pfc[])(unsigned char) = {menu_select, menu2_select};
+//	指针函数
+void(*menu_pfc[])(unsigned char) = {menu_select, menu2_select};
 /*----------------------*/
 /*	 	 有来有去		*/
 /*======================*/

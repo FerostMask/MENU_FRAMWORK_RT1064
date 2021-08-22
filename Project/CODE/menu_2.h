@@ -8,14 +8,15 @@
 /*------------------------------------------------------*/
 /*						 宏定义							*/
 /*======================================================*/
-#define PARASET 0
+#define PARASET_F 0
 /*------------------------------------------------------*/
 /*						变量声明						*/
 /*======================================================*/
 extern unsigned char menu2_limit;
 extern unsigned char menu2_mode;
+extern unsigned char magflag;
 extern short *shortvalue0, *shortvalue1, *shortvalue2, *shortvalue3, *shortvalue4;
-extern float *floatvalue0, *floatvalue1, *floatvalue2, *floatvalue3, *floatvalue4;
+extern float *floatvalue[5];
 /*------------------------------------------------------*/ 
 /* 						函数声明 						*/
 /*======================================================*/
@@ -23,7 +24,7 @@ extern float *floatvalue0, *floatvalue1, *floatvalue2, *floatvalue3, *floatvalue
 /*		    菜单基础部分		*/
 /*==============================*/
 void menu2_init(void);
-void menu2_display(short index);
+void menu2_display(void);
 void menu2_select(unsigned char event);
 /*------------------------------*/
 /*		   数值监视模块			*/

@@ -11,6 +11,8 @@
 /*--------------------------------------------------------------*/
 /* 							 变量定义 							*/
 /*==============================================================*/
+//	一级菜单相关
+short calindex = 0;//一级菜单一维索引
 //	二级菜单
 unsigned char menu2_limit = 0;//菜单阈值
 unsigned char menu2_mode = 0;//菜单模式
@@ -25,7 +27,7 @@ unsigned char magindex = 1;
 float mag[] = {10,1,0.1,0.01,0.001};
 //	数值修改相关
 short *shortvalue0, *shortvalue1, *shortvalue2, *shortvalue3, *shortvalue4;
-float *floatvalue0, *floatvalue1, *floatvalue2, *floatvalue3, *floatvalue4;
+float *floatvalue[5];
 /*--------------------------------------------------------------*/
 /* 							 函数定义 							*/
 /*==============================================================*/
@@ -114,11 +116,63 @@ static char info_found(unsigned char index, unsigned char num){
 	return 0;
 }
 /*------------------------------*/
+/*		 数值显示辅助模块		*/
+/*==============================*/
+static void menu2value_sup(void){
+//	变量定义
+	register char i;
+//	数值显示
+	switch(menu2_mode){
+		case PARASET_F:
+			ips200_display_chinese(109, 192, 16, nom, info_found(1, 3), 0XFFFF);//擦除已保存字样
+			ips200_display_chinese(176, 192, 16, nom, info_found(1, 2), 0XFFFF);//擦除保存字样
+			for(i = 0; i < menu2_limit; i++) ips200_showfloat(120, 15+i, *floatvalue[i], 3, 3);
+			return;
+	}
+}
+/*------------------------------*/
+/*		 菜单高亮显示模块		*/
+/*==============================*/
+void menu2value_hl(void){
+	switch(menu2_mode){
+		case PARASET_F:
+			if(!menu2_index) ips200_display_chinese(176, 192, 16, nom, info_found(1, 2), 0xAE9C);//显示保存
+			else ips200_showfloat(120, 14+menu2_index, *floatvalue[menu2_index-1], 3, 3); 
+			return;
+	}
+}
+/*------------------------------*/
+/*		   数值显示模块			*/
+/*==============================*/
+static void menu2value(void){
+//	显示级别
+	if(magflag) ips200_showfloat(180, 14, mag[magindex], 2, 3);
+//	显示数值
+	menu2value_sup();
+//	高亮数值
+	if(!menu2_level){
+	//	选择
+		ips200_pencolor = 0xFFFF;
+		ips200_bgcolor = 0xFDF8;
+		menu2value_hl();
+		ips200_pencolor = 0xB6DB;
+		ips200_bgcolor = 0xFFFF;
+	}
+	else{
+	//	修改
+		ips200_pencolor = 0xFFFF;
+		ips200_bgcolor = 0xAE9C;
+		menu2value_hl();
+		ips200_pencolor = 0xB6DB;
+		ips200_bgcolor = 0xFFFF;
+	}
+}
+/*------------------------------*/
 /*		 基础信息显示模块		*/
 /*==============================*/
 void found_display(void){
 	switch(menu2_mode){
-		case PARASET:
+		case PARASET_F:
 				ips200_display_chinese(0, 208, 16, nom, info_found(1, 0), 0XFDF8);//参数名
 				ips200_display_chinese(120, 208, 16, nom, info_found(1, 1), 0XFDF8);//参数值
 			return;
@@ -127,22 +181,22 @@ void found_display(void){
 /*------------------------------*/
 /*		   名称显示模块			*/
 /*==============================*/
-void menu2_display(short index){
+void menu2_display(void){
 //	变量定义
 	register char i;
 	if(!dis_str){//显示中文
 		switch(menu2_mode){
-			case PARASET:
-				for(i = 0; i < menu2_limit; i++) ips200_display_chinese(0, 240+i*16, 16, nom, amenu2_init_pfc[index](i+1), 0xB6DB); 
+			case PARASET_F:
+				for(i = 0; i < menu2_limit; i++) ips200_display_chinese(0, 240+i*16, 16, nom, amenu2_init_pfc[calindex](i+1), 0xB6DB); 
 				return;
 		}
 	}
 	else{//显示字母
 		switch(menu2_mode){
-			case PARASET:
+			case PARASET_F:
 				for(i = 0; i < menu2_limit; i++){
-					amenu2_init_pfc[index](i+1);
-//					ips200_showstr(0, 15+i, menustr);
+					amenu2_init_pfc[calindex](i+1);
+					ips200_showstr(0, 15+i, menustr);
 				} 
 				return;
 		}
@@ -152,25 +206,176 @@ void menu2_display(short index){
 /*		 二级菜单初始化模块		*/
 /*==============================*/
 void menu2_init(void){
-//	变量定义            
+//	变量定义及初始化            
 	register char i;
-	short index = 0;
+	calindex = 0, menu2_index = 0, magflag = 0, magindex = 1;
 //	清屏
 	ips200_clear(WHITE);
 //	加载菜单属性
-	for(i = 0; i < menu_index; i++) index += colimit[i];
-    index += menu[menu_index];
-	ips200_showint16(0, 0, index);
-	amenu2_init_pfc[index](0);
+	for(i = 0; i < menu_index; i++) calindex += colimit[i];
+    calindex += menu[menu_index];
+//	ips200_showint16(0, 0, index);
+	amenu2_init_pfc[calindex](0);
 //	初始化菜单
 	switch(menu2_mode){
-		case PARASET://数值修改菜单
+		case PARASET_F://数值修改菜单
 			menu2_index = 1;
 			found_display();
-			menu2_display(index);
+			menu2_display();
+			menu2value();
 			return;
 	}
 }
+/*------------------------------*/
+/*		   数值修改模块			*/
+/*==============================*/
+static void modify(unsigned char index, unsigned char event, unsigned char mode){
+	switch(mode){
+		case 1:
+			if(event){
+		//	数值增加
+				switch(index){
+					case 1:*floatvalue[0]+=mag[magindex];break;
+					case 2:*floatvalue[1]+=mag[magindex];break;
+					case 3:*floatvalue[2]+=mag[magindex];break;
+					case 4:*floatvalue[3]+=mag[magindex];break;
+					case 5:*floatvalue[4]+=mag[magindex];break;
+				}
+			}
+		//	数值减少
+			else{
+				switch(index){
+					case 1:*floatvalue[0]-=mag[magindex];break;
+					case 2:*floatvalue[1]-=mag[magindex];break;
+					case 3:*floatvalue[2]-=mag[magindex];break;
+					case 4:*floatvalue[3]-=mag[magindex];break;
+					case 5:*floatvalue[4]-=mag[magindex];break;
+				}
+			}
+			break;
+		case 2:
+			if(event){
+				switch(index){
+					case 1: *shortvalue0+=mag[magindex];break;
+					case 2: *shortvalue1+=mag[magindex];break;
+					case 3: *shortvalue2+=mag[magindex];break;
+					case 4: *shortvalue3+=mag[magindex];break;
+					case 5: *shortvalue4+=mag[magindex];break;
+				}
+			}
+			else{
+				switch(index){
+					case 1: *shortvalue0-=mag[magindex];break;
+					case 2: *shortvalue1-=mag[magindex];break;
+					case 3: *shortvalue2-=mag[magindex];break;
+					case 4: *shortvalue3-=mag[magindex];break;
+					case 5: *shortvalue4-=mag[magindex];break;
+				}
+			}
+	}
+}
+/*------------------------------*/
+/*		 二级菜单选择模块		*/
+/*==============================*/
+void menu2_select(unsigned char event){
+//	变量定义
+	register unsigned char i;
+//	返回键
+	if(event == 3){
+	//	重置
+		menu_level = 0;
+		menu2_level = 0;
+		magindex = 1;
+		monitorflag = 0;
+		menu_display();
+		excollflag = 0;
+	//	操作定时器
+//		tim_interrupt_init_ms(TIM_2, 2, 0, 0);//开启采集通道
+//		if(!fixedflag) tim_interrupt_disabnle(TIM_6);//除固定显示外关闭监视通道
+		return;
+	}
+	if(!menu2_level){
+		switch(event){
+			case 6://右按键
+				if(magindex < 4) magindex++;
+				break;
+			
+			case 4://左按键
+				if(magindex > 0) magindex--; 
+				break;
+			
+			case 2://上按键
+				if(menu2_index > 0) menu2_index--;
+				break;
+			
+			case 5://下按键
+				if(menu2_index < menu2_limit) menu2_index++;
+				break;
+			
+			case 1://确定键
+				switch(menu2_mode){
+					case PARASET_F:
+						if(!menu2_index){//参数保存
+							ips200_display_chinese(109, 192, 16, nom, info_found(1, 3), 0xAE9C);
+						}
+						else menu2_level = 1;
+						break;
+				}
+//				switch(menu2flag){
+//					case 1://	数值修改
+//						if(!menu2_index){
+//							flash_memory_write_pfc[ctrl_pointer](menu_index, menu[menu_index]);
+//							ips200_display_chinese(109, 192, 16, nom, info_found(1, 3), 0xAE9C);
+//						}
+//						else
+//							menu2_level = 1;
+//						break;
+//					case 2://	监视器固定显示
+//						fixedflag = !fixedflag;
+//						fixedindex = menu[menu_index];
+//						if(fixedflag) for(i=0; i<CSIMENU_FLAG; i++) csimenu_flag[i] = 0;//关闭图像显示
+//						break;
+//					case 3://	按钮
+//						swmode();
+//						swdisplay();
+//						break;
+//					case 0:break;
+//				}
+				break;
+		}
+	}
+	else{
+		switch(event){
+			case 6://右按键
+				if(magindex < 4) magindex++;
+				break;
+			
+			case 4://左按键
+				if(magindex > 0) magindex--; 
+				break;
+			
+			case 2://上按键
+				modify(menu2_index, 1, menu_index);
+				break;
+			
+			case 5://下按键
+				modify(menu2_index, 0, menu_index);
+				break;
+			
+			case 1://确定键
+				menu2_level = 0;
+				break;
+		}
+	}
+//	菜单更新
+	switch(menu2_mode){
+		case PARASET_F:
+			menu2value();
+			break;
+	}
+}
+
+
 //void menu2_init(void){
 ////	初始化数值
 //	menu2flag = 1;
@@ -244,138 +449,6 @@ void menu2_init(void){
 //			monitorflag = 1;
 //			break;
 //	}
-//}
-///*------------------------------*/
-///*		   信息存放模块			*/
-///*==============================*/
-//static char info(unsigned char index, unsigned char num){
-////	变量定义
-//	register unsigned char i;
-//	switch(index){
-//		case MENU_SWITCH:
-//			switch(num){
-//				case 0://彩色图像
-//					for(i = 0; i < 32; i++) nom[i] = cai1[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = se0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = tu0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = xiang1[i];
-//					return 4;
-//				case 1://灰度图像
-//					for(i = 0; i < 32; i++) nom[i] = hui0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = du0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = tu0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = xiang1[i];
-//					return 4;
-//				case 2://状态清除
-//					for(i = 0; i < 32; i++) nom[i] = zhuang0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = tai0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = qing0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = chu0[i];
-//					return 4;
-//				case 10://延时发车
-//					for(i = 0; i < 32; i++) nom[i] = yan0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = shi2[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = fa0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = che0[i];
-//					return 4;
-//				case 11://左
-//					for(i = 0; i < 32; i++) nom[i] = zuo0[i];
-//					return 1;
-//				case 12://右
-//					for(i = 0; i < 32; i++) nom[i] = you0[i];
-//					return 1;
-//				case 13://一号代码
-//					for(i = 0; i < 32; i++) nom[i] = yi1[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = hao0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = dai0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = ma0[i];
-//					return 4;
-//				case 14://二号代码
-//					for(i = 0; i < 32; i++) nom[i] = er0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = hao0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = dai0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = ma0[i];
-//					return 4;
-//				case 20://参数保存
-//					for(i = 0; i < 32; i++) nom[i] = can0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = shu0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = bao0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = cun0[i];
-//					return 4;
-//				case 21://参数还原
-//					for(i = 0; i < 32; i++) nom[i] = can0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = shu0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = huan0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = yuan0[i];
-//					return 4;
-//			}
-//		case PARASET_PID:
-//			switch(num){
-
-//			}
-//			break;
-//		case PARASET_OPER:
-//			switch(num){
-//				case 0://车速
-//					for(i = 0; i < 32; i++) nom[i] = che0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = su0[i];
-//					return 2;
-//				case 1://追踪点
-//					for(i = 0; i < 32; i++) nom[i] = zhui0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = zong0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = dian1[i];
-//					return 3;
-//				case 2://平衡点
-//					for(i = 0; i < 32; i++) nom[i] = ping0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = heng0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = dian1[i];
-//					return 3;
-//				case 10://左环偏置
-//					for(i = 0; i < 32; i++) nom[i] = zuo0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = huan1[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = pian0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = zhi0[i];
-//					return 4;
-//				case 11://右环偏置
-//					for(i = 0; i < 32; i++) nom[i] = you0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = huan1[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = pian0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = zhi0[i];
-//					return 4;
-//				case 12://出环偏置
-//					for(i = 0; i < 32; i++) nom[i] = chu1[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = huan1[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = pian0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = zhi0[i];
-//					return 4;
-//			}
-//		case MONITOR_MENU:
-//			switch(num){
-//				case 0://俯仰角
-//					for(i = 0; i < 32; i++) nom[i] = fu0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = yang0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = jiao0[i];
-//					return 3;
-//				case 1://航向角
-//					for(i = 0; i < 32; i++) nom[i] = hang0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = xiang0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = jiao0[i];
-//					return 3;
-//				case 2://左轮转速
-//					for(i = 0; i < 32; i++) nom[i] = zuo0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = lun0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = zhuan0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = su0[i];
-//					return 4;
-//				case 3://右轮转速
-//					for(i = 0; i < 32; i++) nom[i] = you0[i];
-//					for(i = 0; i < 32; i++) nom[32+i] = lun0[i];
-//					for(i = 0; i < 32; i++) nom[64+i] = zhuan0[i];
-//					for(i = 0; i < 32; i++) nom[96+i] = su0[i];
-//					return 4;
-//			}
-//	}
-//	return 0;
 //}
 ///*------------------------------*/
 ///*		 数值显示辅助模块		*/
@@ -788,139 +861,3 @@ void menu2_init(void){
 //			break;
 //	}
 //}
-/*------------------------------*/
-/*		   数值修改模块			*/
-/*==============================*/
-static void modify(unsigned char index, unsigned char event, unsigned char mode){
-	switch(mode){
-		case 1:
-			if(event){
-		//	数值增加
-				switch(index){
-					case 1:*floatvalue0+=mag[magindex];break;
-					case 2:*floatvalue1+=mag[magindex];break;
-					case 3:*floatvalue2+=mag[magindex];break;
-					case 4:*floatvalue3+=mag[magindex];break;
-					case 5:*floatvalue4+=mag[magindex];break;
-				}
-			}
-		//	数值减少
-			else{
-				switch(index){
-					case 1:*floatvalue0-=mag[magindex];break;
-					case 2:*floatvalue1-=mag[magindex];break;
-					case 3:*floatvalue2-=mag[magindex];break;
-					case 4:*floatvalue3-=mag[magindex];break;
-					case 5:*floatvalue4-=mag[magindex];break;
-				}
-			}
-			break;
-		case 2:
-			if(event){
-				switch(index){
-					case 1: *shortvalue0+=mag[magindex];break;
-					case 2: *shortvalue1+=mag[magindex];break;
-					case 3: *shortvalue2+=mag[magindex];break;
-					case 4: *shortvalue3+=mag[magindex];break;
-					case 5: *shortvalue4+=mag[magindex];break;
-				}
-			}
-			else{
-				switch(index){
-					case 1: *shortvalue0-=mag[magindex];break;
-					case 2: *shortvalue1-=mag[magindex];break;
-					case 3: *shortvalue2-=mag[magindex];break;
-					case 4: *shortvalue3-=mag[magindex];break;
-					case 5: *shortvalue4-=mag[magindex];break;
-				}
-			}
-	}
-}
-/*------------------------------*/
-/*		 二级菜单选择模块		*/
-/*==============================*/
-void menu2_select(unsigned char event){
-//	变量定义
-	register unsigned char i;
-//	返回键
-	if(event == 3){
-	//	重置
-		menu2_level = 0;
-		magindex = 1;
-		monitorflag = 0;
-		menu_level = 0;
-		menu_display();
-		excollflag = 0;
-	//	操作定时器
-//		tim_interrupt_init_ms(TIM_2, 2, 0, 0);//开启采集通道
-//		if(!fixedflag) tim_interrupt_disabnle(TIM_6);//除固定显示外关闭监视通道
-		return;
-	}
-	if(!menu2_level){
-		switch(event){
-			case 6://右按键
-				if(magindex < 4) magindex++;
-				break;
-			
-			case 4://左按键
-				if(magindex > 0) magindex--; 
-				break;
-			
-			case 2://上按键
-				if(menu2_index > 0) menu2_index--;
-				break;
-			
-			case 5://下按键
-				if(menu2_index < menu2_limit) menu2_index++;
-				break;
-			
-			case 1://确定键
-//				switch(menu2flag){
-//					case 1://	数值修改
-//						if(!menu2_index){
-//							flash_memory_write_pfc[ctrl_pointer](menu_index, menu[menu_index]);
-//							ips200_display_chinese(109, 192, 16, nom, info_found(1, 3), 0xAE9C);
-//						}
-//						else
-//							menu2_level = 1;
-//						break;
-//					case 2://	监视器固定显示
-//						fixedflag = !fixedflag;
-//						fixedindex = menu[menu_index];
-//						if(fixedflag) for(i=0; i<CSIMENU_FLAG; i++) csimenu_flag[i] = 0;//关闭图像显示
-//						break;
-//					case 3://	按钮
-//						swmode();
-//						swdisplay();
-//						break;
-//					case 0:break;
-//				}
-				break;
-		}
-//		menu2value();
-	}
-	else{
-		switch(event){
-			case 6://右按键
-				if(magindex < 4) magindex++;
-				break;
-			
-			case 4://左按键
-				if(magindex > 0) magindex--; 
-				break;
-			
-			case 2://上按键
-				modify(menu2_index, 1, menu_index);
-				break;
-			
-			case 5://下按键
-				modify(menu2_index, 0, menu_index);
-				break;
-			
-			case 1://确定键
-				menu2_level = 0;
-				break;
-		}
-//		menu2value();
-	}
-}
