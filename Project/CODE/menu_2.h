@@ -9,13 +9,18 @@
 /*						 宏定义							*/
 /*======================================================*/
 #define PARASET_F 0
+#define PARASET_S 1
+#define SWITCHER 2
+//	功能定义
+#define FUNCTION 5
 /*------------------------------------------------------*/
 /*						变量声明						*/
 /*======================================================*/
-extern unsigned char menu2_limit;
+extern char menu2_limit;
 extern unsigned char menu2_mode;
 extern unsigned char magflag;
-extern short *shortvalue0, *shortvalue1, *shortvalue2, *shortvalue3, *shortvalue4;
+extern unsigned char *swflag;
+extern short *shortvalue[5];
 extern float *floatvalue[5];
 /*------------------------------------------------------*/ 
 /* 						函数声明 						*/

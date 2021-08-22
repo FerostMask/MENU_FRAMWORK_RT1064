@@ -7,10 +7,6 @@
 /*--------------------------------------------------------------*/
 /*							  宏定义							*/
 /*==============================================================*/
-//	按键标志位
-#define CSIMENU_FLAG 3
-#define RUN_FLAG 4
-#define FLASH_MEMORY_FLAG 2
 //	摄像头
 #define EFF_ROW 54
 //	flash参数存储
@@ -130,9 +126,9 @@ extern unsigned char nom[128];
 //	标志位
 extern unsigned char fixedflag;
 extern unsigned char monitorflag;
-extern unsigned char csimenu_flag[CSIMENU_FLAG];
-extern unsigned char run_flag[RUN_FLAG];
-extern unsigned char flash_memory_flag[RUN_FLAG];
+extern unsigned char csimenu_flag[4];
+extern unsigned char run_flag[4];
+extern unsigned char flash_memory_flag[4];
 extern unsigned char excollflag;
 extern unsigned char menu_level;
 //	二级菜单

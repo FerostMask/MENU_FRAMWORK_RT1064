@@ -66,7 +66,7 @@ void GPIO2_Combined_16_31_IRQHandler(void){
 
 void GPIO2_Combined_0_15_IRQHandler(void){
 //	按键延时确认
-	systick_delay_us(20000);
+	systick_delay_ms(20);
 //	按键1
     if(GET_GPIO_FLAG(KEY1)){
 		menu_pfc[menu_level](1);

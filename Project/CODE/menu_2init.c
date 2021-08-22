@@ -10,9 +10,9 @@
 /* 							 函数定义 							*/
 /*==============================================================*/
 /*------------------------------*/
-/*		   	 菜单模板			*/
+/*		 数值修改菜单模板		*/
 /*==============================*/
-char init_model_mode0(char index){//	数值修改菜单模板
+char init_model_mode_para(char index){//	数值修改菜单模板
 //	变量定义及初始化
 	register unsigned char i;
 	dis_str = 0;
@@ -21,12 +21,12 @@ char init_model_mode0(char index){//	数值修改菜单模板
 	//	菜单属性初始化
 		case 0:
 		//	菜单属性
-			menu2_mode = 0;
+			menu2_mode = PARASET_F;
 			menu2_limit = 0;
 			magflag = 1;
 		//	修改数值的地址
 			floatvalue[0] = &cam_steering.Kp;
-			shortvalue0 = &spd;
+			shortvalue[0] = &spd;
 			return 0;
 	//	菜单名称初始化
 		case 1://第一个参数 | 字母样例
@@ -42,6 +42,44 @@ char init_model_mode0(char index){//	数值修改菜单模板
 	return 0;
 }
 /*------------------------------*/
+/*		   按钮切换模板			*/
+/*==============================*/
+char init_model_mode_sw(char index){//	按钮切换模板
+//	变量定义及初始化
+	register unsigned char i;
+	dis_str = 0;//排版问题，不推荐使用字母
+//	信息索引
+	switch(index){
+	//	菜单属性初始化
+		case 0:
+		//	菜单属性
+			menu2_mode = SWITCHER;
+			menu2_limit = 3;
+			magflag = 0;
+		//	标志位数组
+			swflag = csimenu_flag;
+			return 0;
+	//	菜单名称初始化
+		case 1://第一个参数 | 字母样例
+			strcpy(menustr, "hello");
+			return 0;
+		case 2://第二个参数 | 中文样例
+			for(i = 0; i < 32; i++) nom[i] = cai1[i];
+			for(i = 0; i < 32; i++) nom[32+i] = se0[i];
+			for(i = 0; i < 32; i++) nom[64+i] = tu0[i];
+			for(i = 0; i < 32; i++) nom[96+i] = xiang1[i];
+			return 4;//返回字数
+	//	按键执行功能 | 因为排版问题单页只支持四个按键
+		case FUNCTION:
+			switch(menu2_index){
+				case 0://第一行按键功能
+					break;
+			}
+			return 0;
+	}
+	return 0;
+}
+/*------------------------------*/
 /*		   	 图像显示			*/
 /*==============================*/
 char menu2_imgdisplay(char index){
@@ -52,9 +90,11 @@ char menu2_imgdisplay(char index){
 	switch(index){
 	//	菜单属性初始化
 		case 0:
-			menu2_mode = PARASET_F;
+			menu2_mode = SWITCHER;
 			menu2_limit = 3;
 			return 0;
+		//	标志位数组
+			swflag = csimenu_flag;
 	//	菜单名称初始化
 		case 1://彩色图像
 			for(i = 0; i < 32; i++) nom[i] = cai1[i];
@@ -74,6 +114,12 @@ char menu2_imgdisplay(char index){
 			for(i = 0; i < 32; i++) nom[64+i] = qing0[i];
 			for(i = 0; i < 32; i++) nom[96+i] = chu0[i];
 			return 4;
+		case FUNCTION://按键功能执行
+			switch(menu2_index){
+				case 0:
+					break;
+			}
+			return 0;
 	}
 	return 0;
 }
