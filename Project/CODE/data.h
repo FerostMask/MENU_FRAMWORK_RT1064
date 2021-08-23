@@ -49,7 +49,7 @@ extern void(*state_pfc[])(void);
 //  岔道相关
 extern short bias_fork;
 extern unsigned char border_top[MT9V03X_W-4];
-extern unsigned char direction_fork, direction_fork_set;
+extern short direction_fork, direction_fork_set;
 extern unsigned char cnt_left, cnt_right;//数左右倾斜
 extern unsigned char total_count_fork;
 extern unsigned char count_fork;
@@ -78,7 +78,7 @@ extern void(*ctrl_pfc_alter1[])(void);
 //	一号代码
 extern short ring_lefbias, ring_rigbias;
 extern short ring_outbias;
-extern unsigned short point_folrow;
+extern short point_folrow;
 /*----------------------*/
 /*	 	  PID模块		*/
 /*======================*/

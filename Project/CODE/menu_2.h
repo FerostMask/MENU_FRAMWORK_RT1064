@@ -22,6 +22,7 @@ extern unsigned char magflag;
 extern unsigned char *swflag;
 extern short *shortvalue[5];
 extern float *floatvalue[5];
+extern unsigned char swclearflag;
 /*------------------------------------------------------*/ 
 /* 						º¯ÊýÉùÃ÷ 						*/
 /*======================================================*/

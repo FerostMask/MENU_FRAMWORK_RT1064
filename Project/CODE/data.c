@@ -47,10 +47,10 @@ unsigned short img_color = 0xAE9C;
 //void(*state_pfc[])(void) = {state_machine_enter, state_machine_bend, state_machine_ring, state_machine_cross, state_machine_fork, state_machine_final};
 //  岔道相关
 unsigned char border_top[MT9V03X_W-4];
-unsigned char direction_fork = 0, direction_fork_set = 0;//岔道方向 | 0左 | 1右
 unsigned char cnt_left, cnt_right;//数左右倾斜
 unsigned char total_count_fork = 0;
 unsigned char count_fork = 0;//终点检测
+short direction_fork = 0, direction_fork_set = 0;//岔道方向 | 0左 | 1右
 short cut_fork_lef, cut_fork_rig, cut_fork_bottom_col;
 short bottom_point_row;
 //	拐点相关
@@ -73,7 +73,7 @@ unsigned char ctrl_pointer = 0, dir_run_out;
 //	一号代码
 short ring_lefbias = -17, ring_rigbias = 0;
 short ring_outbias = -17;
-unsigned short point_folrow;
+short point_folrow;
 ///*----------------------*/
 ///*	     flash存储		*/
 ///*======================*/
