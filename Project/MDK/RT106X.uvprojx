@@ -1769,11 +1769,6 @@
               <FilePath>..\CODE\data.c</FilePath>
             </File>
             <File>
-              <FileName>ctrl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\CODE\ctrl.c</FilePath>
-            </File>
-            <File>
               <FileName>menu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\CODE\menu.c</FilePath>
@@ -1797,6 +1792,11 @@
               <FileName>menu_2init.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\CODE\menu_2init.c</FilePath>
+            </File>
+            <File>
+              <FileName>para_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CODE\para_flash.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3564,11 +3564,6 @@
               <FilePath>..\CODE\data.c</FilePath>
             </File>
             <File>
-              <FileName>ctrl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\CODE\ctrl.c</FilePath>
-            </File>
-            <File>
               <FileName>menu.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\CODE\menu.c</FilePath>
@@ -3592,6 +3587,11 @@
               <FileName>menu_2init.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\CODE\menu_2init.c</FilePath>
+            </File>
+            <File>
+              <FileName>para_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\CODE\para_flash.c</FilePath>
             </File>
           </Files>
         </Group>

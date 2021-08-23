@@ -2570,7 +2570,7 @@
 
   <Group>
     <GroupName>seekfree_libraries</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -3749,18 +3749,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\CODE\ctrl.c</PathWithFileName>
-      <FilenameWithoutPath>ctrl.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>16</GroupNumber>
-      <FileNumber>264</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>..\CODE\menu.c</PathWithFileName>
       <FilenameWithoutPath>menu.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -3768,7 +3756,7 @@
     </File>
     <File>
       <GroupNumber>16</GroupNumber>
-      <FileNumber>265</FileNumber>
+      <FileNumber>264</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3780,7 +3768,7 @@
     </File>
     <File>
       <GroupNumber>16</GroupNumber>
-      <FileNumber>266</FileNumber>
+      <FileNumber>265</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3792,7 +3780,7 @@
     </File>
     <File>
       <GroupNumber>16</GroupNumber>
-      <FileNumber>267</FileNumber>
+      <FileNumber>266</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3804,13 +3792,25 @@
     </File>
     <File>
       <GroupNumber>16</GroupNumber>
-      <FileNumber>268</FileNumber>
+      <FileNumber>267</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\CODE\menu_2init.c</PathWithFileName>
       <FilenameWithoutPath>menu_2init.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>16</GroupNumber>
+      <FileNumber>268</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\CODE\para_flash.c</PathWithFileName>
+      <FilenameWithoutPath>para_flash.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

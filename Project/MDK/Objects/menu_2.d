@@ -27,6 +27,6 @@
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X_CSI.h \
   ..\CODE\menu_2.h ..\..\Libraries\seekfree_libraries\zf_pit.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_pit.h \
-  ..\..\Libraries\fontlib.h ..\CODE\menu_2init.h \
+  ..\..\Libraries\fontlib.h ..\CODE\para_flash.h ..\CODE\menu_2init.h \
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_IPS200_PARALLEL8.h \
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_FONT.h

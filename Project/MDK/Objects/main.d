@@ -90,4 +90,4 @@
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_WIRELESS.h \
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X_CSI.h \
   ..\CODE\CAM.h ..\CODE\data.h ..\CODE\menu.h ..\CODE\Init.h \
-  ..\CODE\data.h
+  ..\CODE\data.h ..\CODE\para_flash.h

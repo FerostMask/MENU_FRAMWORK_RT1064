@@ -10,10 +10,12 @@
 /*======================================================*/
 #define PARASET_F 0
 #define PARASET_S 1
-#define SWITCHER 2
+#define BUTTONSW 2
 #define MONITOR 3
 //	功能定义
 #define FUNCTION 5
+#define ORING_VALUE 6
+#define FLASH_WRITE 7
 #define MONITOR_ON 6
 #define MONITOR_OFF 7
 /*------------------------------------------------------*/

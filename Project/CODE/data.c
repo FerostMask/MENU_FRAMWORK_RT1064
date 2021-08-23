@@ -3,9 +3,9 @@
 /*==============================================================*/
 #include "data.h"
 #include "CAM.h"
-#include "ctrl.h"
 #include "menu.h"
 #include "menu_2.h"
+#include "para_flash.h"
 #include "ctrl_alter1.h"
 /*--------------------------------------------------------------*/
 /*							  ∫Í∂®“Â							*/
@@ -74,10 +74,10 @@ unsigned char ctrl_pointer = 0, dir_run_out;
 short ring_lefbias = -17, ring_rigbias = 0;
 short ring_outbias = -17;
 short point_folrow;
-///*----------------------*/
-///*	     flash¥Ê¥¢		*/
-///*======================*/
-//int flash_memory[256];
+/*----------------------*/
+/*	     flash¥Ê¥¢		*/
+/*======================*/
+unsigned long flash_memory[255];
 //void(*Init_para_pfc[])(void) = {Init_para, Init_para_alter1};
 //char(*flash_init_pfc[])(void) = {flash_init, flash_init_alter1};
 //void(*first_flash_init_pfc[])(void) = {first_flash_init, first_flash_init_alter1};

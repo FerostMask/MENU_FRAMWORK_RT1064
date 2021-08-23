@@ -6,6 +6,7 @@
 #include "menu_2.h"
 #include "zf_pit.h"
 #include "fontlib.h"
+#include "para_flash.h"
 #include "menu_2init.h"
 #include "SEEKFREE_IPS200_PARALLEL8.h"
 /*--------------------------------------------------------------*/
@@ -144,7 +145,7 @@ static void menu2value_sup(void){
 			ips200_display_chinese(176, 192, 16, nom, info_found(1, 2), 0XFFFF);//擦除保存字样
 			for(i = 0; i < menu2_limit; i++) ips200_showint16(120, 15+i, *shortvalue[i]);
 			return;
-		case SWITCHER:
+		case BUTTONSW:
 			for(i = 0; i < (menu2_limit+1); i++){
 				if(*(swflag+i)){//开启
 					ips200_display_chinese(118, 240+18*i, 16, nom, info_found(3, 2), 0xB6DB);
@@ -171,7 +172,7 @@ void menu2value_hl(void){
 			if(!menu2_index) ips200_display_chinese(176, 192, 16, nom, info_found(1, 2), 0xAE9C);//显示保存
 			else ips200_showint16(120, 14+menu2_index, *shortvalue[menu2_index-1]);
 			return;
-		case SWITCHER:
+		case BUTTONSW:
 			if(*(swflag+menu2_index)) ips200_display_chinese(118, 240+18*menu2_index, 16, nom, info_found(3, 2), 0XB7BD);
 			else ips200_display_chinese(198, 240+18*menu2_index, 16, nom, info_found(3, 2), 0XF5BA);
 			return;
@@ -214,7 +215,7 @@ void found_display(void){
 				ips200_display_chinese(0, 208, 16, nom, info_found(1, 0), 0XFDF8);//参数名
 				ips200_display_chinese(120, 208, 16, nom, info_found(1, 1), 0XFDF8);//参数值
 			return;
-		case SWITCHER:
+		case BUTTONSW:
 				ips200_display_chinese(0, 208, 16, nom, info_found(3, 4), 0XFDF8);
 				ips200_display_chinese(150, 208, 16, nom, info_found(3, 5), 0XFDF8);
 				ips200_display_chinese(110, 224, 16, nom, info_found(3, 6), 0XFDF8);
@@ -235,7 +236,7 @@ void menu2_display(void){
 			case MONITOR:
 				for(i = 0; i < menu2_limit; i++) ips200_display_chinese(0, 240+i*16, 16, nom, amenu2_init_pfc[calindex](i+1), 0xB6DB); 
 				return;
-			case SWITCHER:
+			case BUTTONSW:
 				for(i = 0; i < (menu2_limit+1); i++) ips200_display_chinese(0, 240+i*18, 16, nom, amenu2_init_pfc[calindex](i+1), 0xB6DB); 
 				return;
 		}
@@ -250,7 +251,7 @@ void menu2_display(void){
 					ips200_showstr(0, 15+i, menustr);
 				} 
 				return;
-			case SWITCHER:
+			case BUTTONSW:
 				for(i = 0; i < (menu2_limit+1); i++){
 					amenu2_init_pfc[calindex](i+1);
 					ips200_showstr(0, 15+i, menustr);
@@ -283,7 +284,7 @@ void menu2_init(void){
 			menu2_display();
 			menu2value();
 			return;
-		case SWITCHER:
+		case BUTTONSW:
 			menu2_index = 0;
 			menu2_limit -= 1;
 			found_display();
@@ -354,12 +355,13 @@ void menu2_select(unsigned char event){
 					case PARASET_F:
 					case PARASET_S:
 						if(!menu2_index){//参数保存
+							flash_memory_write();
 							ips200_display_chinese(109, 192, 16, nom, info_found(1, 3), 0xAE9C);
 							return;
 						}
 						else menu2_level = 1;
 						break;
-					case SWITCHER:
+					case BUTTONSW:
 						if(swclearflag){
 							swtemp = *(swflag+menu2_index);
 							for(i = 0; i < (menu2_limit+1); i++) *(swflag+i) = 0;

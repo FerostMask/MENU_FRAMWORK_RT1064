@@ -10,10 +10,7 @@
 //	摄像头
 #define EFF_ROW 54
 //	flash参数存储
-#define FLASH_NUM 11
-#define FLASH_NUM1 11
-#define FLASH_MEMORY_SLECTION FLASH_SECTION_112
-#define FLASH_MEMORY_SLECTION1 FLASH_SECTION_122
+#define FLASH_MEMORY_SLECTION 500
 /*------------------------------------------------------*/
 /* 					  外部变量声明 						*/
 /*======================================================*/
@@ -112,7 +109,7 @@ extern char buff_get6, buff_get7;
 /*----------------------*/
 /*	     flash存储		*/
 /*======================*/
-extern int flash_memory[256];
+extern unsigned long flash_memory[255];
 extern void(*Init_para_pfc[])(void);
 extern char(*flash_init_pfc[])(void);
 extern void(*first_flash_init_pfc[])(void);

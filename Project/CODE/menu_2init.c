@@ -28,6 +28,7 @@ char init_model_mode_para(char index){//	数值修改菜单模板
 		//	修改数值的地址
 			floatvalue[0] = &cam_steering.Kp;
 			shortvalue[0] = &spd;
+			flash_index = 0;//数值的flash地址
 			return 0;
 	//	菜单名称初始化
 		case 1://第一个参数 | 字母样例
@@ -39,6 +40,8 @@ char init_model_mode_para(char index){//	数值修改菜单模板
 			for(i = 0; i < 32; i++) nom[64+i] = tu0[i];
 			for(i = 0; i < 32; i++) nom[96+i] = xiang1[i];
 			return 4;//返回字数
+		case ORING_VALUE://设定参数初始值
+			return 0;
 	}
 	return 0;
 }
@@ -54,7 +57,7 @@ char init_model_mode_sw(char index){//	按钮切换模板
 	//	菜单属性初始化
 		case 0:
 		//	菜单属性
-			menu2_mode = SWITCHER;
+			menu2_mode = BUTTONSW;
 			menu2_limit = 3;
 			magflag = 0;
 			swclearflag = 0;//是否清除其他非选标志位
@@ -129,7 +132,7 @@ char menu2_imgdisplay(char index){
 	switch(index){
 	//	菜单属性初始化
 		case 0:
-			menu2_mode = SWITCHER;
+			menu2_mode = BUTTONSW;
 			menu2_limit = 3;
 			magflag = 0;
 			swclearflag = 1;
@@ -182,6 +185,7 @@ char menu2_steeringPID(char index){
 		//	修改数值的地址
 			floatvalue[0] = &cam_steering.Kp;
 			floatvalue[1] = &cam_steering.Kd;
+			flash_index = 0;
 			return 0;
 	//	菜单名称初始化
 		case 1:
@@ -189,6 +193,10 @@ char menu2_steeringPID(char index){
 			return 0;
 		case 2:
 			strcpy(menustr, "Kd");
+			return 0;
+		case ORING_VALUE:
+			cam_steering.Kp = 2.3;
+			cam_steering.Kd = 0.05;
 			return 0;
 	}
 	return 0;
@@ -212,6 +220,7 @@ char menu2_spdctrl(char index){
 			shortvalue[0] = &spd_set;
 			shortvalue[1] = &point_folrow;
 			shortvalue[2] = &direction_fork_set;
+			flash_index = 1;
 			return 0;
 	//	菜单名称初始化
 		case 1://车速
@@ -228,6 +237,11 @@ char menu2_spdctrl(char index){
 			for(i = 0; i < 32; i++) nom[32+i] = heng0[i];
 			for(i = 0; i < 32; i++) nom[64+i] = dian1[i];
 			return 3;
+		case ORING_VALUE:
+			spd_set = 150;
+			point_folrow = 57;
+			direction_fork_set = 0;
+			return 0;
 	}
 	return 0;
 }
@@ -291,5 +305,6 @@ char(*amenu2_init_pfc[])(char) = {	menu2_imgdisplay,
 									menu2_spdctrl,
 									menu2_spdmonitor	};
 //	变量定义
+unsigned char flash_index = 0;
 char dis_str = 0;
 char menustr[20];

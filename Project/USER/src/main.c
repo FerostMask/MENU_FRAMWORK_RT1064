@@ -24,6 +24,7 @@
 #include "data.h"
 #include "menu.h"
 #include "Init.h"
+#include "para_flash.h"
 /*--------------------------------------------------------------*/
 /* 							 函数定义 							*/
 /*==============================================================*/
@@ -41,6 +42,7 @@ int main(void){
 	DisableGlobalIRQ();
     board_init();//务必保留，本函数用于初始化MPU 时钟 调试串口
 	pit_init();
+	flash_init();
 	ips200_init();
 //	mt9v03x_csi_init();
 	//此处编写用户代码(例如：外设初始化代码等)
@@ -48,7 +50,8 @@ int main(void){
 /*	 	 用户初始化		*/
 /*======================*/
 //	pit_interrupt_ms(PIT_CH0, 1000);
-	Init_para();
+//	Init_para();
+	paraflash_init();
 	Init_button();
 	Init_motor();
 	menu_display();

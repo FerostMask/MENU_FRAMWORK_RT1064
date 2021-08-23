@@ -1,5 +1,5 @@
-./objects/data.o: ..\CODE\data.c ..\CODE\data.h \
-  ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X.h \
+./objects/para_flash.o: ..\CODE\para_flash.c ..\CODE\para_flash.h \
+  ..\CODE\data.h ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X.h \
   ..\..\Libraries\seekfree_libraries\common\common.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_common.h \
   D:\Software\Keil_MDK5\ARM\ARMCLANG\Bin\..\include\assert.h \
@@ -25,5 +25,7 @@
   ..\..\Libraries\seekfree_libraries\zf_uart.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_lpuart.h \
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X_CSI.h \
-  ..\CODE\CAM.h ..\CODE\menu.h ..\CODE\menu_2.h ..\CODE\para_flash.h \
-  ..\CODE\ctrl_alter1.h
+  ..\CODE\pid.h ..\CODE\menu_2.h ..\CODE\menu_2init.h \
+  ..\..\Libraries\seekfree_libraries\zf_flash.h \
+  ..\..\Libraries\seekfree_peripheral\SEEKFREE_IPS200_PARALLEL8.h \
+  ..\..\Libraries\seekfree_peripheral\SEEKFREE_FONT.h
