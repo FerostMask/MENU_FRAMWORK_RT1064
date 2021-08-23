@@ -11,8 +11,11 @@
 #define PARASET_F 0
 #define PARASET_S 1
 #define SWITCHER 2
+#define MONITOR 3
 //	功能定义
 #define FUNCTION 5
+#define MONITOR_ON 6
+#define MONITOR_OFF 7
 /*------------------------------------------------------*/
 /*						变量声明						*/
 /*======================================================*/
@@ -38,7 +41,6 @@ void menu2_select(unsigned char event);
 void menu2value_hl(void);
 //	监视器
 void monitor(void);
-void fixed_monitor(void);
 /*------------------------------*/
 /*		   按钮状态模块			*/
 /*==============================*/

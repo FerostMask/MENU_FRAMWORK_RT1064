@@ -21,6 +21,7 @@
 #include "isr.h"
 #include "Init.h"
 #include "menu.h"
+#include "menu_2.h"
 
 void CSI_IRQHandler(void)
 {
@@ -47,8 +48,8 @@ void PIT_IRQHandler(void){
         PIT_FLAG_CLEAR(PIT_CH2);
     }
     
-    if(PIT_FLAG_GET(PIT_CH3))
-    {
+    if(PIT_FLAG_GET(PIT_CH3)){//监视器
+		monitor();
         PIT_FLAG_CLEAR(PIT_CH3);
     }
 
@@ -72,36 +73,48 @@ void GPIO2_Combined_0_15_IRQHandler(void){
 		menu_pfc[menu_level](1);
 		CLEAR_GPIO_FLAG(KEY1);//清除中断标志位
 		while(!gpio_get(KEY1));
+		systick_delay_ms(20);
+		CLEAR_GPIO_FLAG(KEY1);//清除中断标志位
     }
 //	按键2	
     if(GET_GPIO_FLAG(KEY2)){
 		menu_pfc[menu_level](2);
 		CLEAR_GPIO_FLAG(KEY2);
 		while(!gpio_get(KEY2));
+		systick_delay_ms(20);
+		CLEAR_GPIO_FLAG(KEY2);
     } 
 //	按键3
     if(GET_GPIO_FLAG(KEY3)){
 		menu_pfc[menu_level](3);
         CLEAR_GPIO_FLAG(KEY3);
 		while(!gpio_get(KEY3));
+		systick_delay_ms(20);
+		CLEAR_GPIO_FLAG(KEY3);
     } 
 //	按键4
     if(GET_GPIO_FLAG(KEY4)){
 		menu_pfc[menu_level](4);
         CLEAR_GPIO_FLAG(KEY4);
 		while(!gpio_get(KEY4));
+		systick_delay_ms(20);
+		CLEAR_GPIO_FLAG(KEY4);
     } 
 //	按键5
     if(GET_GPIO_FLAG(KEY5)){
 		menu_pfc[menu_level](5);
 		CLEAR_GPIO_FLAG(KEY5);
 		while(!gpio_get(KEY5));
+		systick_delay_ms(20);
+		CLEAR_GPIO_FLAG(KEY5);
     } 
 //	按键6
     if(GET_GPIO_FLAG(KEY6)){
 		menu_pfc[menu_level](6);
         CLEAR_GPIO_FLAG(KEY6);
 		while(!gpio_get(KEY6));
+		systick_delay_ms(20);
+		CLEAR_GPIO_FLAG(KEY6);
     } 
     if(GET_GPIO_FLAG(C16)){
         CLEAR_GPIO_FLAG(C16);//清除中断标志位

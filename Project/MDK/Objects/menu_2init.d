@@ -1,6 +1,5 @@
 ./objects/menu_2init.o: ..\CODE\menu_2init.c ..\CODE\menu_2init.h \
-  ..\..\Libraries\fontlib.h ..\CODE\menu_2.h ..\CODE\data.h \
-  ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X.h \
+  ..\..\Libraries\seekfree_libraries\zf_pit.h \
   ..\..\Libraries\seekfree_libraries\common\common.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_common.h \
   D:\Software\Keil_MDK5\ARM\ARMCLANG\Bin\..\include\assert.h \
@@ -22,6 +21,9 @@
   ..\..\Libraries\nxp_libraries\drives\fsl_clock.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_common.h \
   D:\Software\Keil_MDK5\ARM\ARMCLANG\Bin\..\include\math.h \
+  ..\..\Libraries\nxp_libraries\drives\fsl_pit.h \
+  ..\..\Libraries\fontlib.h ..\CODE\menu_2.h ..\CODE\data.h \
+  ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_edma.h \
   ..\..\Libraries\seekfree_libraries\zf_uart.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_lpuart.h \

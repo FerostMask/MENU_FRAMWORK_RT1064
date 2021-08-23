@@ -93,6 +93,7 @@ unsigned char menu_index = 0;
 //	二级菜单
 unsigned char menu2_index = 0;
 unsigned char menu2_level = 0;
+short *monitor_sv[5] = {0};//监视器
 //	标志位
 unsigned char excollflag = 0;//电磁极值采集标志位
 unsigned char fixedflag = 0;//固定显示

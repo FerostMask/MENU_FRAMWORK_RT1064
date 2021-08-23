@@ -118,6 +118,15 @@ static char info_found(unsigned char index, unsigned char num){
 	return 0;
 }
 /*------------------------------*/
+/*		   数值监视模块			*/
+/*==============================*/
+void monitor(void){
+//	变量定义
+	register char i;
+//	更新数值
+	for(i = 0; i < menu2_limit; i++) ips200_showint16(120, 15+i, *monitor_sv[i]);
+}
+/*------------------------------*/
 /*		 数值显示辅助模块		*/
 /*==============================*/
 static void menu2value_sup(void){
@@ -201,6 +210,7 @@ void found_display(void){
 	switch(menu2_mode){
 		case PARASET_F:
 		case PARASET_S:
+		case MONITOR:
 				ips200_display_chinese(0, 208, 16, nom, info_found(1, 0), 0XFDF8);//参数名
 				ips200_display_chinese(120, 208, 16, nom, info_found(1, 1), 0XFDF8);//参数值
 			return;
@@ -222,6 +232,7 @@ void menu2_display(void){
 		switch(menu2_mode){
 			case PARASET_F:
 			case PARASET_S:
+			case MONITOR:
 				for(i = 0; i < menu2_limit; i++) ips200_display_chinese(0, 240+i*16, 16, nom, amenu2_init_pfc[calindex](i+1), 0xB6DB); 
 				return;
 			case SWITCHER:
@@ -233,6 +244,7 @@ void menu2_display(void){
 		switch(menu2_mode){
 			case PARASET_F:
 			case PARASET_S:
+			case MONITOR:
 				for(i = 0; i < menu2_limit; i++){
 					amenu2_init_pfc[calindex](i+1);
 					ips200_showstr(0, 15+i, menustr);
@@ -278,6 +290,12 @@ void menu2_init(void){
 			menu2_display();
 			menu2value();
 			return;
+		case MONITOR:
+			menu2_index = 0;
+			found_display();
+			menu2_display();
+			amenu2_init_pfc[calindex](MONITOR_ON);
+			return;
 	}
 }
 /*------------------------------*/
@@ -310,9 +328,7 @@ void menu2_select(unsigned char event){
 		monitorflag = 0;
 		menu_display();
 		excollflag = 0;
-	//	操作定时器
-//		tim_interrupt_init_ms(TIM_2, 2, 0, 0);//开启采集通道
-//		if(!fixedflag) tim_interrupt_disabnle(TIM_6);//除固定显示外关闭监视通道
+		amenu2_init_pfc[calindex](MONITOR_OFF);//关闭定时器
 		return;
 	}
 	if(!menu2_level){
@@ -382,41 +398,3 @@ void menu2_select(unsigned char event){
 //	菜单更新
 	menu2value();
 }
-
-///*------------------------------*/
-///*		   数值监视模块			*/
-///*==============================*/
-//void monitor(void){
-//	switch(menu[menu_index]){
-//		case 0:
-//			break;
-//		case 1:
-//			ips200_showuint8(120, 17, adc2.value);
-//			break;
-//	}
-//}
-///*------------------------------*/
-///*		   固定监视模块			*/
-///*==============================*/
-//void fixed_monitor(void){
-//	switch(fixedindex){
-//		case 0:
-//		//	名称显示
-//			ips200_showstr(0, 0, "error");
-//			ips200_showstr(0, 1, "result");
-//		//	数值显示
-////			ips200_showint16(120, 0, adc_err.rs);
-////			ips200_showint16(120, 1, adc_steering.rs);
-//			break;
-//		case 1:
-//		//	名称显示
-//			ips200_showstr(0, 0, "ADC0");
-//			ips200_showstr(0, 1, "ADC1");
-//			ips200_showstr(0, 2, "ADC2");
-//			ips200_showstr(0, 3, "ADC3");
-//			ips200_showstr(0, 4, "ADC4");
-//		//	数值显示
-//			ips200_showuint8(120, 2, adc2.value);
-//			break;
-//	}
-//}

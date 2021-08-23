@@ -89,4 +89,5 @@
   ..\..\Libraries\seekfree_libraries\zf_uart.h \
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_WIRELESS.h \
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X_CSI.h \
-  ..\USER\inc\isr.h ..\CODE\Init.h ..\CODE\data.h ..\CODE\menu.h
+  ..\USER\inc\isr.h ..\CODE\Init.h ..\CODE\data.h ..\CODE\menu.h \
+  ..\CODE\menu_2.h

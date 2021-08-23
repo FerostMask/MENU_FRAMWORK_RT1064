@@ -131,6 +131,7 @@ extern unsigned char run_flag[4];
 extern unsigned char flash_memory_flag[4];
 extern unsigned char excollflag;
 extern unsigned char menu_level;
+extern short *monitor_sv[5];
 //	¶þ¼¶²Ëµ¥
 extern unsigned char menu2_index;
 extern unsigned char menu2_level;

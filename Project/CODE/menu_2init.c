@@ -2,6 +2,7 @@
 /*							头文件加载							*/
 /*==============================================================*/
 #include "menu_2init.h"
+#include "zf_pit.h"
 #include "fontlib.h"
 #include "menu_2.h"
 #include "string.h"
@@ -76,6 +77,43 @@ char init_model_mode_sw(char index){//	按钮切换模板
 				case 0://第一行按键功能
 					break;
 			}
+			return 0;
+	}
+	return 0;
+}
+/*------------------------------*/
+/*		  监视器菜单模板		*/
+/*==============================*/
+char init_model_mode_monitor(char index){//	数值修改菜单模板
+//	变量定义及初始化
+	register unsigned char i;
+	dis_str = 0;//是否使用字母显示
+//	信息索引
+	switch(index){
+	//	菜单属性初始化
+		case 0:
+		//	菜单属性
+			menu2_mode = MONITOR;
+			menu2_limit = 0;
+			magflag = 0;
+		//	修改数值的地址
+			monitor_sv[0] = &pita;
+			return 0;
+	//	菜单名称初始化
+		case 1://第一个参数 | 字母样例
+			strcpy(menustr, "hello");
+			return 0;
+		case 2://第二个参数 | 中文样例
+			for(i = 0; i < 32; i++) nom[i] = cai1[i];
+			for(i = 0; i < 32; i++) nom[32+i] = se0[i];
+			for(i = 0; i < 32; i++) nom[64+i] = tu0[i];
+			for(i = 0; i < 32; i++) nom[96+i] = xiang1[i];
+			return 4;//返回字数
+		case MONITOR_ON://开启定时器
+			pit_interrupt_ms(PIT_CH3, 100);
+			return 0;
+		case MONITOR_OFF://关闭定时器
+			pit_close(PIT_CH3);
 			return 0;
 	}
 	return 0;
@@ -193,13 +231,65 @@ char menu2_spdctrl(char index){
 	}
 	return 0;
 }
+/*------------------------------*/
+/*		     姿态监视			*/
+/*==============================*/
+char menu2_spdmonitor(char index){//	数值修改菜单模板
+//	变量定义及初始化
+	register unsigned char i;
+	dis_str = 0;//是否使用字母显示
+//	信息索引
+	switch(index){
+	//	菜单属性初始化
+		case 0:
+		//	菜单属性
+			menu2_mode = MONITOR;
+			menu2_limit = 2;
+			magflag = 0;
+		//	修改数值的地址
+			monitor_sv[0] = &pita;
+			monitor_sv[1] = &yawa;
+			return 0;
+	//	菜单名称初始化
+		case 1://俯仰角
+			for(i = 0; i < 32; i++) nom[i] = fu0[i];
+			for(i = 0; i < 32; i++) nom[32+i] = yang0[i];
+			for(i = 0; i < 32; i++) nom[64+i] = jiao0[i];
+			return 3;
+		case 2://航向角
+			for(i = 0; i < 32; i++) nom[i] = hang0[i];
+			for(i = 0; i < 32; i++) nom[32+i] = xiang0[i];
+			for(i = 0; i < 32; i++) nom[64+i] = jiao0[i];
+			return 3;
+		case 3://左轮转速
+			for(i = 0; i < 32; i++) nom[i] = zuo0[i];
+			for(i = 0; i < 32; i++) nom[32+i] = lun0[i];
+			for(i = 0; i < 32; i++) nom[64+i] = zhuan0[i];
+			for(i = 0; i < 32; i++) nom[96+i] = su0[i];
+			return 4;
+		case 4://右轮转速
+			for(i = 0; i < 32; i++) nom[i] = you0[i];
+			for(i = 0; i < 32; i++) nom[32+i] = lun0[i];
+			for(i = 0; i < 32; i++) nom[64+i] = zhuan0[i];
+			for(i = 0; i < 32; i++) nom[96+i] = su0[i];
+			return 4;
+		case MONITOR_ON://开启定时器
+			pit_interrupt_ms(PIT_CH3, 100);
+			return 0;
+		case MONITOR_OFF://关闭定时器
+			pit_close(PIT_CH3);
+			return 0;
+	}
+	return 0;
+}
 /*--------------------------------------------------------------*/
 /* 							 变量定义 							*/
 /*==============================================================*/
 //	初始化函数指针数组
 char(*amenu2_init_pfc[])(char) = {	menu2_imgdisplay, 
 									menu2_steeringPID,
-									menu2_spdctrl		};
+									menu2_spdctrl,
+									menu2_spdmonitor	};
 //	变量定义
 char dis_str = 0;
 char menustr[20];
