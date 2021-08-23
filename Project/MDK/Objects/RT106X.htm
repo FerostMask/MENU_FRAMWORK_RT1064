@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\RT106X.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\RT106X.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6120001: Last Updated: Tue Aug 24 02:01:03 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6120001: Last Updated: Tue Aug 24 02:52:55 2021
 <BR><P>
 <H3>Maximum Stack Usage =       3424 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2534,8 +2534,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO2_Combined_0_15_IRQHandler
 </UL>
 
-<P><STRONG><a name="[1d9]"></a>para_reset</STRONG> (Thumb, 464 bytes, Stack size 48 bytes, para_flash.o(.text.para_reset))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1288<LI>Call Chain = para_reset &rArr; flash_page_program &rArr; __aeabi_assert &rArr; DbgConsole_Printf &rArr; StrFormatPrintf &rArr; ConvertFloatRadixNumToString &rArr; __hardfp_pow &rArr; sqrt
+<P><STRONG><a name="[1d9]"></a>para_reset</STRONG> (Thumb, 538 bytes, Stack size 56 bytes, para_flash.o(.text.para_reset))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1296<LI>Call Chain = para_reset &rArr; flash_page_program &rArr; __aeabi_assert &rArr; DbgConsole_Printf &rArr; StrFormatPrintf &rArr; ConvertFloatRadixNumToString &rArr; __hardfp_pow &rArr; sqrt
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_page_program
 <LI><a href="#[1ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_erase_sector
@@ -2544,8 +2544,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;paraflash_init
 </UL>
 
-<P><STRONG><a name="[1cc]"></a>paraflash_init</STRONG> (Thumb, 482 bytes, Stack size 40 bytes, para_flash.o(.text.paraflash_init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 1328<LI>Call Chain = paraflash_init &rArr; para_reset &rArr; flash_page_program &rArr; __aeabi_assert &rArr; DbgConsole_Printf &rArr; StrFormatPrintf &rArr; ConvertFloatRadixNumToString &rArr; __hardfp_pow &rArr; sqrt
+<P><STRONG><a name="[1cc]"></a>paraflash_init</STRONG> (Thumb, 532 bytes, Stack size 40 bytes, para_flash.o(.text.paraflash_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1336<LI>Call Chain = paraflash_init &rArr; para_reset &rArr; flash_page_program &rArr; __aeabi_assert &rArr; DbgConsole_Printf &rArr; StrFormatPrintf &rArr; ConvertFloatRadixNumToString &rArr; __hardfp_pow &rArr; sqrt
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_read_page
 <LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_check

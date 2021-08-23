@@ -7620,6 +7620,7 @@ Section Cross References
     menu_2init.o(.data.amenu2_init_pfc) refers to menu_2init.o(.text.menu2_spdmonitor) for menu2_spdmonitor
     para_flash.o(.ARM.exidx.text.ex_int2float) refers to para_flash.o(.text.ex_int2float) for [Anonymous Symbol]
     para_flash.o(.ARM.exidx.text.ex_float2int) refers to para_flash.o(.text.ex_float2int) for [Anonymous Symbol]
+    para_flash.o(.text.para_reset) refers to menu.o(.data.colimit) for colimit
     para_flash.o(.text.para_reset) refers to menu_2init.o(.data.amenu2_init_pfc) for amenu2_init_pfc
     para_flash.o(.text.para_reset) refers to menu_2.o(.bss.menu2_mode) for menu2_mode
     para_flash.o(.text.para_reset) refers to menu_2.o(.bss.menu2_limit) for menu2_limit
@@ -7631,6 +7632,19 @@ Section Cross References
     para_flash.o(.text.para_reset) refers to zf_flash.o(.text.flash_erase_sector) for flash_erase_sector
     para_flash.o(.text.para_reset) refers to zf_flash.o(.text.flash_page_program) for flash_page_program
     para_flash.o(.ARM.exidx.text.para_reset) refers to para_flash.o(.text.para_reset) for [Anonymous Symbol]
+    para_flash.o(.text.para_saveall) refers to menu.o(.data.colimit) for colimit
+    para_flash.o(.text.para_saveall) refers to menu_2init.o(.data.amenu2_init_pfc) for amenu2_init_pfc
+    para_flash.o(.text.para_saveall) refers to menu_2.o(.bss.menu2_mode) for menu2_mode
+    para_flash.o(.text.para_saveall) refers to menu_2.o(.bss.menu2_limit) for menu2_limit
+    para_flash.o(.text.para_saveall) refers to menu_2.o(.bss.floatvalue) for floatvalue
+    para_flash.o(.text.para_saveall) refers to para_flash.o(.text.ex_float2int) for ex_float2int
+    para_flash.o(.text.para_saveall) refers to menu_2init.o(.bss.flash_index) for flash_index
+    para_flash.o(.text.para_saveall) refers to data.o(.bss.flash_memory) for flash_memory
+    para_flash.o(.text.para_saveall) refers to menu_2.o(.bss.shortvalue) for shortvalue
+    para_flash.o(.text.para_saveall) refers to zf_flash.o(.text.flash_erase_sector) for flash_erase_sector
+    para_flash.o(.text.para_saveall) refers to zf_flash.o(.text.flash_page_program) for flash_page_program
+    para_flash.o(.ARM.exidx.text.para_saveall) refers to para_flash.o(.text.para_saveall) for [Anonymous Symbol]
+    para_flash.o(.text.paraflash_init) refers to menu.o(.data.colimit) for colimit
     para_flash.o(.text.paraflash_init) refers to zf_flash.o(.text.flash_check) for flash_check
     para_flash.o(.text.paraflash_init) refers to seekfree_ips200_parallel8.o(.text.ips200_showint16) for ips200_showint16
     para_flash.o(.text.paraflash_init) refers to para_flash.o(.text.para_reset) for para_reset
@@ -12468,13 +12482,15 @@ Removing Unused input sections from the image.
     Removing para_flash.o(.ARM.exidx.text.ex_int2float), (8 bytes).
     Removing para_flash.o(.ARM.exidx.text.ex_float2int), (8 bytes).
     Removing para_flash.o(.ARM.exidx.text.para_reset), (8 bytes).
+    Removing para_flash.o(.text.para_saveall), (486 bytes).
+    Removing para_flash.o(.ARM.exidx.text.para_saveall), (8 bytes).
     Removing para_flash.o(.ARM.exidx.text.paraflash_init), (8 bytes).
     Removing para_flash.o(.ARM.exidx.text.flash_memory_write), (8 bytes).
     Removing dfltul.o(.text), (24 bytes).
     Removing d2f.o(.text), (56 bytes).
     Removing fepilogue.o(.text), (110 bytes).
 
-4619 unused section(s) (total 392846 bytes) removed from the image.
+4621 unused section(s) (total 393340 bytes) removed from the image.
 
 ==============================================================================
 
@@ -13219,327 +13235,327 @@ Image Symbol Table
     [Anonymous Symbol]                       0x80016460   Section        0  menu_2.o(.text.monitor)
     [Anonymous Symbol]                       0x800164b8   Section        0  seekfree_mt9v03x.o(.text.mt9v03x_vsync)
     [Anonymous Symbol]                       0x800164e0   Section        0  para_flash.o(.text.para_reset)
-    [Anonymous Symbol]                       0x800166b0   Section        0  para_flash.o(.text.paraflash_init)
-    [Anonymous Symbol]                       0x80016898   Section        0  zf_pit.o(.text.pit_close)
-    [Anonymous Symbol]                       0x800168d0   Section        0  zf_pit.o(.text.pit_init)
-    [Anonymous Symbol]                       0x80016900   Section        0  zf_pit.o(.text.pit_interrupt)
-    [Anonymous Symbol]                       0x80016960   Section        0  zf_pwm.o(.text.pwm_init)
-    [Anonymous Symbol]                       0x80016c58   Section        0  zf_pwm.o(.text.pwm_iomuxc)
-    [Anonymous Symbol]                       0x80017140   Section        0  zf_rom_api.o(.text.rom_api_flexspi_nor_flash_erase)
-    [Anonymous Symbol]                       0x80017188   Section        0  zf_rom_api.o(.text.rom_api_flexspi_nor_flash_page_program)
-    [Anonymous Symbol]                       0x800171d0   Section        0  zf_rom_api.o(.text.rom_api_flexspi_nor_get_config)
-    [Anonymous Symbol]                       0x80017210   Section        0  zf_rom_api.o(.text.rom_api_init)
-    [Anonymous Symbol]                       0x80017228   Section        0  zf_systick.o(.text.systick_delay)
-    [Anonymous Symbol]                       0x80017280   Section        0  zf_systick.o(.text.systick_delay_ms)
-    [Anonymous Symbol]                       0x800172c0   Section        0  zf_uart.o(.text.uart_init)
-    [Anonymous Symbol]                       0x80017358   Section        0  zf_uart.o(.text.uart_iomuxc)
-    i.__0sprintf                             0x80017750   Section        0  printfa.o(i.__0sprintf)
-    i.__ARM_fpclassify                       0x80017778   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i.__hardfp_modf                          0x800177a8   Section        0  modf.o(i.__hardfp_modf)
-    i.__hardfp_pow                           0x80017868   Section        0  pow.o(i.__hardfp_pow)
-    i.__kernel_poly                          0x8001812c   Section        0  poly.o(i.__kernel_poly)
-    i.__mathlib_dbl_divzero                  0x800181a0   Section        0  dunder.o(i.__mathlib_dbl_divzero)
-    i.__mathlib_dbl_infnan2                  0x800181b8   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
-    i.__mathlib_dbl_invalid                  0x800181c0   Section        0  dunder.o(i.__mathlib_dbl_invalid)
-    i.__mathlib_dbl_overflow                 0x800181d8   Section        0  dunder.o(i.__mathlib_dbl_overflow)
-    i.__mathlib_dbl_underflow                0x800181f0   Section        0  dunder.o(i.__mathlib_dbl_underflow)
-    i.__set_errno                            0x80018208   Section        0  errno.o(i.__set_errno)
-    _fp_digits                               0x80018215   Thumb Code   366  printfa.o(i._fp_digits)
-    i._fp_digits                             0x80018214   Section        0  printfa.o(i._fp_digits)
-    _printf_core                             0x80018399   Thumb Code  1744  printfa.o(i._printf_core)
-    i._printf_core                           0x80018398   Section        0  printfa.o(i._printf_core)
-    _printf_post_padding                     0x80018a75   Thumb Code    36  printfa.o(i._printf_post_padding)
-    i._printf_post_padding                   0x80018a74   Section        0  printfa.o(i._printf_post_padding)
-    _printf_pre_padding                      0x80018a99   Thumb Code    46  printfa.o(i._printf_pre_padding)
-    i._printf_pre_padding                    0x80018a98   Section        0  printfa.o(i._printf_pre_padding)
-    _sputc                                   0x80018ac7   Thumb Code    10  printfa.o(i._sputc)
-    i._sputc                                 0x80018ac6   Section        0  printfa.o(i._sputc)
-    i.fabs                                   0x80018ad0   Section        0  fabs.o(i.fabs)
-    i.sqrt                                   0x80018ae8   Section        0  sqrt.o(i.sqrt)
-    bp                                       0x80018b58   Data          16  pow.o(.constdata)
-    .constdata                               0x80018b58   Section      136  pow.o(.constdata)
-    dp_h                                     0x80018b68   Data          16  pow.o(.constdata)
-    dp_l                                     0x80018b78   Data          16  pow.o(.constdata)
-    L                                        0x80018b88   Data          48  pow.o(.constdata)
-    P                                        0x80018bb8   Data          40  pow.o(.constdata)
-    .constdata                               0x80018be0   Section        8  qnan.o(.constdata)
-    .L__const.CLOCK_GetPllFreq.enetRefClkFreq 0x80018bf0   Data          16  fsl_clock.o(.rodata.cst16)
-    s_LpuartAdapterBase                      0x80018c00   Data          36  lpuart_adapter.o(.rodata.s_LpuartAdapterBase)
-    [Anonymous Symbol]                       0x80018c00   Section        0  lpuart_adapter.o(.rodata.s_LpuartAdapterBase)
-    s_enetBases                              0x80018c24   Data          12  fsl_enet.o(.rodata.s_enetBases)
-    [Anonymous Symbol]                       0x80018c24   Section        0  fsl_enet.o(.rodata.s_enetBases)
-    s_gpioBases                              0x80018c30   Data          40  fsl_gpio.o(.rodata.s_gpioBases)
-    [Anonymous Symbol]                       0x80018c30   Section        0  fsl_gpio.o(.rodata.s_gpioBases)
-    s_gpioClock                              0x80018c58   Data          12  fsl_gpio.o(.rodata.s_gpioClock)
-    [Anonymous Symbol]                       0x80018c58   Section        0  fsl_gpio.o(.rodata.s_gpioClock)
-    s_gptBases                               0x80018c64   Data          12  fsl_gpt.o(.rodata.s_gptBases)
-    [Anonymous Symbol]                       0x80018c64   Section        0  fsl_gpt.o(.rodata.s_gptBases)
-    s_gptClocks                              0x80018c70   Data           6  fsl_gpt.o(.rodata.s_gptClocks)
-    [Anonymous Symbol]                       0x80018c70   Section        0  fsl_gpt.o(.rodata.s_gptClocks)
-    s_lpuartBases                            0x80018c78   Data          36  fsl_lpuart.o(.rodata.s_lpuartBases)
-    [Anonymous Symbol]                       0x80018c78   Section        0  fsl_lpuart.o(.rodata.s_lpuartBases)
-    s_lpuartClock                            0x80018c9c   Data          18  fsl_lpuart.o(.rodata.s_lpuartClock)
-    [Anonymous Symbol]                       0x80018c9c   Section        0  fsl_lpuart.o(.rodata.s_lpuartClock)
-    s_pitBases                               0x80018cb0   Data           4  fsl_pit.o(.rodata.s_pitBases)
-    [Anonymous Symbol]                       0x80018cb0   Section        0  fsl_pit.o(.rodata.s_pitBases)
-    s_pitClocks                              0x80018cb4   Data           2  fsl_pit.o(.rodata.s_pitClocks)
-    [Anonymous Symbol]                       0x80018cb4   Section        0  fsl_pit.o(.rodata.s_pitClocks)
-    s_pwmBases                               0x80018cb8   Data          20  fsl_pwm.o(.rodata.s_pwmBases)
-    [Anonymous Symbol]                       0x80018cb8   Section        0  fsl_pwm.o(.rodata.s_pwmBases)
-    s_pwmClocks                              0x80018ccc   Data          40  fsl_pwm.o(.rodata.s_pwmClocks)
-    [Anonymous Symbol]                       0x80018ccc   Section        0  fsl_pwm.o(.rodata.s_pwmClocks)
-    s_usdhcBase                              0x80018cf4   Data          12  fsl_usdhc.o(.rodata.s_usdhcBase)
-    [Anonymous Symbol]                       0x80018cf4   Section        0  fsl_usdhc.o(.rodata.s_usdhcBase)
-    .L.str.12                                0x80018d00   Data          13  clock_config.o(.rodata.str1.1)
-    .L.str.14                                0x80018d00   Data          13  clock_config.o(.rodata.str1.1)
-    .L.str.2                                 0x80018d00   Data          13  clock_config.o(.rodata.str1.1)
-    .L.str.2                                 0x80018d00   Data          13  clock_config.o(.rodata.str1.1)
-    .L.str.2                                 0x80018d00   Data          13  clock_config.o(.rodata.str1.1)
-    .L.str.3                                 0x80018d00   Data          13  clock_config.o(.rodata.str1.1)
-    .L.str.3                                 0x80018d00   Data          13  clock_config.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80018d00   Section        0  clock_config.o(.rodata.str1.1)
-    .L.str                                   0x80018d0d   Data          30  clock_config.o(.rodata.str1.1)
-    .L.str.1                                 0x80018d2b   Data          49  clock_config.o(.rodata.str1.1)
-    .L.str.13                                0x80018d2b   Data          49  clock_config.o(.rodata.str1.1)
-    .L.str.15                                0x80018d2b   Data          49  clock_config.o(.rodata.str1.1)
-    .L.str.3                                 0x80018d2b   Data          49  clock_config.o(.rodata.str1.1)
-    .L.str.3                                 0x80018d2b   Data          49  clock_config.o(.rodata.str1.1)
-    .L.str.4                                 0x80018d2b   Data          49  clock_config.o(.rodata.str1.1)
-    .L.str.4                                 0x80018d2b   Data          49  clock_config.o(.rodata.str1.1)
-    .L.str.1                                 0x80018d5c   Data          73  serial_manager.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80018d5c   Section        0  serial_manager.o(.rodata.str1.1)
-    .L.str.5                                 0x80018da5   Data          11  serial_manager.o(.rodata.str1.1)
-    .L.str.3                                 0x80018db0   Data          12  serial_manager.o(.rodata.str1.1)
-    .L.str.2                                 0x80018dbc   Data          13  serial_manager.o(.rodata.str1.1)
-    .L.str.2                                 0x80018dbc   Data          13  serial_manager.o(.rodata.str1.1)
-    .L.str                                   0x80018dc9   Data           7  serial_manager.o(.rodata.str1.1)
-    .L.str.4                                 0x80018dc9   Data           7  serial_manager.o(.rodata.str1.1)
-    .L.str.4                                 0x80018dd0   Data           7  serial_manager.o(.rodata.str1.1)
-    .L.str.6                                 0x80018dd0   Data           7  serial_manager.o(.rodata.str1.1)
-    .L.str.8                                 0x80018dd0   Data           7  serial_manager.o(.rodata.str1.1)
-    .L.str.3                                 0x80018dd7   Data           7  serial_manager.o(.rodata.str1.1)
-    .L.str.6                                 0x80018dd7   Data          61  serial_manager.o(.rodata.str1.1)
-    .L.str.7                                 0x80018dd7   Data           7  serial_manager.o(.rodata.str1.1)
-    .L.str.1                                 0x80018dde   Data          75  serial_port_uart.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80018dde   Section        0  serial_port_uart.o(.rodata.str1.1)
-    .L.str                                   0x80018e29   Data          13  serial_port_uart.o(.rodata.str1.1)
-    .L.str.3                                 0x80018e36   Data          73  lpuart_adapter.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80018e36   Section        0  lpuart_adapter.o(.rodata.str1.1)
-    .L.str.4                                 0x80018e7f   Data          38  lpuart_adapter.o(.rodata.str1.1)
-    .L.str.1                                 0x80018ea5   Data          63  lpuart_adapter.o(.rodata.str1.1)
-    .L.str.1                                 0x80018ee4   Data          49  fsl_clock.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80018ee4   Section        0  fsl_clock.o(.rodata.str1.1)
-    .L.str                                   0x80018f15   Data          15  fsl_clock.o(.rodata.str1.1)
-    .L.str.2                                 0x80018f24   Data           6  fsl_clock.o(.rodata.str1.1)
-    .L.str.2                                 0x80018f24   Data           6  fsl_clock.o(.rodata.str1.1)
-    .L.str                                   0x80018f2a   Data          52  fsl_edma.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80018f2a   Section        0  fsl_edma.o(.rodata.str1.1)
-    .L.str.7                                 0x80018f5e   Data          15  fsl_edma.o(.rodata.str1.1)
-    .L.str.1                                 0x80018f6d   Data          48  fsl_edma.o(.rodata.str1.1)
-    .L.str.2                                 0x80018f8e   Data          12  fsl_edma.o(.rodata.str1.1)
-    .L.str.3                                 0x80018f9a   Data          30  fsl_edma.o(.rodata.str1.1)
-    .L.str                                   0x80018f9d   Data          35  fsl_enet.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80018f9d   Section        0  fsl_enet.o(.rodata.str1.1)
-    .L.str.4                                 0x80018fb8   Data          15  fsl_edma.o(.rodata.str1.1)
-    .L.str.1                                 0x80018fc0   Data          48  fsl_enet.o(.rodata.str1.1)
-    .L.str.5                                 0x80018fc7   Data          34  fsl_edma.o(.rodata.str1.1)
-    .L.str.6                                 0x80018fe9   Data          58  fsl_edma.o(.rodata.str1.1)
-    .L.str                                   0x80018ff0   Data          38  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.2                                 0x80018ff0   Data          15  fsl_enet.o(.rodata.str1.1)
-    .L.str.24                                0x80018ff0   Data          27  fsl_flexcan.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80018ff0   Section        0  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.3                                 0x80018fff   Data          15  fsl_enet.o(.rodata.str1.1)
-    .L.str.25                                0x8001900b   Data          27  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.4                                 0x8001900e   Data          21  fsl_enet.o(.rodata.str1.1)
-    .L.str.5                                 0x80019023   Data          16  fsl_enet.o(.rodata.str1.1)
-    .L.str.26                                0x80019026   Data          27  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.8                                 0x80019032   Data          34  fsl_edma.o(.rodata.str1.1)
-    .L.str.6                                 0x80019033   Data          51  fsl_enet.o(.rodata.str1.1)
-    .L.str.1                                 0x80019041   Data          51  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.2                                 0x80019049   Data          16  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.9                                 0x80019054   Data          16  fsl_edma.o(.rodata.str1.1)
-    .L.str.3                                 0x80019059   Data         117  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.10                                0x80019064   Data          17  fsl_edma.o(.rodata.str1.1)
-    .L.str.7                                 0x80019066   Data          18  fsl_enet.o(.rodata.str1.1)
-    .L.str.2                                 0x80019074   Data          35  fsl_gpio.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80019074   Section        0  fsl_gpio.o(.rodata.str1.1)
-    .L.str.11                                0x80019075   Data         119  fsl_edma.o(.rodata.str1.1)
-    .L.str.8                                 0x80019078   Data          31  fsl_enet.o(.rodata.str1.1)
-    .L.str                                   0x80019097   Data          10  fsl_gpio.o(.rodata.str1.1)
-    .L.str                                   0x80019097   Data          10  fsl_gpio.o(.rodata.str1.1)
-    .L.str.3                                 0x80019097   Data          10  fsl_gpio.o(.rodata.str1.1)
-    .L.str.9                                 0x80019097   Data          21  fsl_enet.o(.rodata.str1.1)
-    .L.str.1                                 0x800190a1   Data          48  fsl_gpio.o(.rodata.str1.1)
-    .L.str.10                                0x800190ac   Data          15  fsl_enet.o(.rodata.str1.1)
-    .L.str.11                                0x800190bb   Data          13  fsl_enet.o(.rodata.str1.1)
-    .L.str.12                                0x800190c8   Data          16  fsl_enet.o(.rodata.str1.1)
-    .L.str.4                                 0x800190ce   Data          27  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.5                                 0x800190d1   Data          34  fsl_gpt.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x800190d1   Section        0  fsl_gpt.o(.rodata.str1.1)
-    .L.str.13                                0x800190d8   Data          13  fsl_enet.o(.rodata.str1.1)
-    .L.str.14                                0x800190e5   Data          49  fsl_enet.o(.rodata.str1.1)
-    .L.str.5                                 0x800190e9   Data          25  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.12                                0x800190ec   Data         125  fsl_edma.o(.rodata.str1.1)
-    .L.str                                   0x800190f3   Data          38  fsl_gpt.o(.rodata.str1.1)
-    .L.str.6                                 0x800190f3   Data          38  fsl_gpt.o(.rodata.str1.1)
-    .L.str.6                                 0x80019102   Data          44  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.15                                0x80019116   Data          71  fsl_enet.o(.rodata.str1.1)
-    .L.str.1                                 0x80019119   Data          47  fsl_gpt.o(.rodata.str1.1)
-    .L.str.7                                 0x8001912e   Data          42  fsl_flexcan.o(.rodata.str1.1)
-    .L.str                                   0x80019148   Data          19  fsl_gpt.o(.rodata.str1.1)
-    .L.str.8                                 0x80019158   Data          35  fsl_flexcan.o(.rodata.str1.1)
-    .L.str                                   0x8001915b   Data          15  fsl_gpt.o(.rodata.str1.1)
-    .L.str                                   0x8001915b   Data          15  fsl_gpt.o(.rodata.str1.1)
-    .L.str.2                                 0x8001915b   Data          15  fsl_gpt.o(.rodata.str1.1)
-    .L.str.3                                 0x8001915b   Data          15  fsl_gpt.o(.rodata.str1.1)
-    .L.str.16                                0x8001915d   Data          51  fsl_enet.o(.rodata.str1.1)
-    .L.str                                   0x80019163   Data           7  fsl_gpt.o(.rodata.str1.1)
-    .L.str                                   0x80019163   Data           7  fsl_gpt.o(.rodata.str1.1)
-    .L.str.2                                 0x80019163   Data           7  fsl_gpt.o(.rodata.str1.1)
-    .L.str.13                                0x80019169   Data          41  fsl_edma.o(.rodata.str1.1)
-    .L.str.7                                 0x8001916a   Data          47  fsl_gpt.o(.rodata.str1.1)
-    .L.str.9                                 0x8001917b   Data          29  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.17                                0x80019190   Data          42  fsl_enet.o(.rodata.str1.1)
-    .L.str.14                                0x80019192   Data           6  fsl_edma.o(.rodata.str1.1)
-    .L.str.10                                0x80019198   Data          33  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.15                                0x80019198   Data          13  fsl_edma.o(.rodata.str1.1)
-    .L.str                                   0x80019199   Data          36  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.8                                 0x80019199   Data          17  fsl_lpspi.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80019199   Section        0  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.16                                0x800191a5   Data          49  fsl_edma.o(.rodata.str1.1)
-    .L.str.9                                 0x800191aa   Data          17  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.11                                0x800191b9   Data          45  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.18                                0x800191ba   Data           6  fsl_enet.o(.rodata.str1.1)
-    .L.str.10                                0x800191bb   Data          17  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.11                                0x800191cc   Data          17  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.17                                0x800191d6   Data          35  fsl_edma.o(.rodata.str1.1)
-    .L.str.1                                 0x800191dd   Data          49  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.12                                0x800191e6   Data          45  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.2                                 0x800191ee   Data          13  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.18                                0x800191f9   Data          29  fsl_edma.o(.rodata.str1.1)
-    .L.str.3                                 0x800191fb   Data          12  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.4                                 0x80019207   Data          17  fsl_lpspi.o(.rodata.str1.1)
-    .L.str                                   0x8001920e   Data          37  fsl_lpuart.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001920e   Section        0  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.13                                0x80019213   Data          35  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.5                                 0x80019218   Data           6  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.6                                 0x8001921e   Data           7  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.7                                 0x80019225   Data           9  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.8                                 0x80019233   Data          13  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.14                                0x80019236   Data          37  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.5                                 0x8001923b   Data           5  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.1                                 0x80019240   Data          50  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.15                                0x8001925b   Data           6  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.16                                0x80019261   Data          17  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.2                                 0x80019265   Data          15  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.12                                0x80019272   Data          13  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.17                                0x80019272   Data          23  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.6                                 0x80019272   Data          72  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.13                                0x8001927f   Data          49  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.18                                0x80019289   Data          17  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.19                                0x8001929a   Data          15  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.20                                0x800192a9   Data          16  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.14                                0x800192b0   Data           7  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.15                                0x800192b7   Data           7  fsl_lpspi.o(.rodata.str1.1)
-    .L.str.21                                0x800192b9   Data          51  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.5                                 0x800192ba   Data          72  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.22                                0x800192ec   Data          44  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.4                                 0x80019302   Data          26  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.23                                0x80019318   Data          18  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.4                                 0x8001931c   Data          34  fsl_pit.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001931c   Section        0  fsl_pit.o(.rodata.str1.1)
-    .L.str.7                                 0x8001932d   Data          18  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.1                                 0x8001933e   Data          47  fsl_pit.o(.rodata.str1.1)
-    .L.str.9                                 0x8001934c   Data          19  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.10                                0x8001935f   Data          13  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.11                                0x8001936c   Data          19  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.14                                0x8001936d   Data          34  fsl_pwm.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001936d   Section        0  fsl_pwm.o(.rodata.str1.1)
-    .L.str.27                                0x8001937b   Data          13  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.12                                0x8001937f   Data          21  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.28                                0x80019388   Data          49  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.7                                 0x8001938f   Data          45  fsl_pwm.o(.rodata.str1.1)
-    .L.str.13                                0x80019394   Data          14  fsl_lpuart.o(.rodata.str1.1)
-    .L.str.29                                0x800193b9   Data          38  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.1                                 0x800193bc   Data          47  fsl_pwm.o(.rodata.str1.1)
-    .L.str.30                                0x800193df   Data          25  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.5                                 0x800193eb   Data          11  fsl_pwm.o(.rodata.str1.1)
-    .L.str.3                                 0x800193f6   Data          11  fsl_pwm.o(.rodata.str1.1)
-    .L.str.31                                0x800193f8   Data          25  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.6                                 0x80019401   Data          12  fsl_pwm.o(.rodata.str1.1)
-    .L.str.8                                 0x80019403   Data          33  fsl_pwm.o(.rodata.str1.1)
-    .L.str.4                                 0x8001940d   Data          11  fsl_pwm.o(.rodata.str1.1)
-    .L.str.32                                0x80019411   Data          27  fsl_flexcan.o(.rodata.str1.1)
-    .L.str                                   0x80019418   Data          30  fsl_sai.o(.rodata.str1.1)
-    .L.str.14                                0x80019418   Data          26  fsl_sai.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80019418   Section        0  fsl_sai.o(.rodata.str1.1)
-    .L.str.9                                 0x80019424   Data          25  fsl_pwm.o(.rodata.str1.1)
-    .L.str.33                                0x8001942c   Data          38  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.15                                0x80019432   Data          26  fsl_sai.o(.rodata.str1.1)
-    .L.str.10                                0x8001943d   Data          31  fsl_pwm.o(.rodata.str1.1)
-    .L.str.1                                 0x8001944c   Data          47  fsl_sai.o(.rodata.str1.1)
-    .L.str.34                                0x80019452   Data          39  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.11                                0x8001945c   Data          12  fsl_pwm.o(.rodata.str1.1)
-    .L.str.2                                 0x80019465   Data          15  fsl_sai.o(.rodata.str1.1)
-    .L.str.3                                 0x80019474   Data          67  fsl_sai.o(.rodata.str1.1)
-    .L.str.35                                0x80019479   Data          38  fsl_flexcan.o(.rodata.str1.1)
-    .L.str                                   0x8001947b   Data          15  fsl_sdmmc_host.o(.rodata.str1.1)
-    .L.str.1                                 0x8001947b   Data          48  fsl_sdmmc_host.o(.rodata.str1.1)
-    .L.str.4                                 0x8001947b   Data          48  fsl_sdmmc_host.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001947b   Section        0  fsl_sdmmc_host.o(.rodata.str1.1)
-    .L.str.2                                 0x8001948a   Data          85  fsl_sdmmc_host.o(.rodata.str1.1)
-    .L.str.36                                0x8001949f   Data          40  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.3                                 0x800194ab   Data          25  zf_flash.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x800194ab   Section        0  zf_flash.o(.rodata.str1.1)
-    .L.str.4                                 0x800194b7   Data          78  fsl_sai.o(.rodata.str1.1)
-    .L.str.1                                 0x800194c4   Data          46  zf_flash.o(.rodata.str1.1)
-    .L.str.37                                0x800194c7   Data          74  fsl_flexcan.o(.rodata.str1.1)
-    .L.str.2                                 0x800194f2   Data          31  zf_flash.o(.rodata.str1.1)
-    .L.str.5                                 0x80019505   Data          78  fsl_sai.o(.rodata.str1.1)
-    .L.str                                   0x80019511   Data          28  zf_flash.o(.rodata.str1.1)
-    .L.str                                   0x8001952d   Data           2  zf_iomuxc.o(.rodata.str1.1)
-    .L.str                                   0x8001952d   Data           2  zf_iomuxc.o(.rodata.str1.1)
-    .L.str                                   0x8001952d   Data           2  zf_iomuxc.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001952d   Section        0  zf_iomuxc.o(.rodata.str1.1)
-    .L.str.1                                 0x8001952f   Data          47  zf_iomuxc.o(.rodata.str1.1)
-    .L.str.6                                 0x80019553   Data          43  fsl_sai.o(.rodata.str1.1)
-    .L.str.1                                 0x8001955e   Data          47  zf_pit.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001955e   Section        0  zf_pit.o(.rodata.str1.1)
-    .L.str.7                                 0x8001957e   Data          15  fsl_sai.o(.rodata.str1.1)
-    .L.str.1                                 0x8001958d   Data          44  zf_pwm.o(.rodata.str1.1)
-    .L.str.8                                 0x8001958d   Data          70  fsl_sai.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001958d   Section        0  zf_pwm.o(.rodata.str1.1)
-    .L.str.2                                 0x800195b9   Data          39  zf_systick.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x800195b9   Section        0  zf_systick.o(.rodata.str1.1)
-    .L.str.9                                 0x800195d3   Data          15  fsl_sai.o(.rodata.str1.1)
-    .L.str.1                                 0x800195e0   Data          47  zf_systick.o(.rodata.str1.1)
-    .L.str.10                                0x800195e2   Data          21  fsl_sai.o(.rodata.str1.1)
-    .L.str.11                                0x800195f7   Data           6  fsl_sai.o(.rodata.str1.1)
-    .L.str.12                                0x800195fd   Data          19  fsl_sai.o(.rodata.str1.1)
-    .L.str.1                                 0x8001960f   Data          45  zf_uart.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001960f   Section        0  zf_uart.o(.rodata.str1.1)
-    .L.str.13                                0x80019610   Data          70  fsl_sai.o(.rodata.str1.1)
-    .L.str                                   0x8001963c   Data           3  seekfree_ips200_parallel8.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001963c   Section        0  seekfree_ips200_parallel8.o(.rodata.str1.1)
-    .L.str.1                                 0x8001963f   Data           3  seekfree_ips200_parallel8.o(.rodata.str1.1)
-    .L.str                                   0x80019642   Data          43  fsl_assert.o(.rodata.str1.1)
-    .L.str.2                                 0x80019642   Data           2  seekfree_ips200_parallel8.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x80019642   Section        0  fsl_assert.o(.rodata.str1.1)
-    .L.str.3                                 0x80019644   Data          64  seekfree_ips200_parallel8.o(.rodata.str1.1)
-    .L.str.1                                 0x8001966d   Data          74  fsl_debug_console.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x8001966d   Section        0  fsl_debug_console.o(.rodata.str1.1)
-    .L.str.16                                0x8001968a   Data          13  fsl_sai.o(.rodata.str1.1)
-    .L.str.17                                0x80019697   Data          49  fsl_sai.o(.rodata.str1.1)
-    .L.str.2                                 0x800196b7   Data          10  fsl_debug_console.o(.rodata.str1.1)
-    .L.str                                   0x800196c1   Data          11  fsl_debug_console.o(.rodata.str1.1)
-    .L.str.18                                0x800196c8   Data          34  fsl_sai.o(.rodata.str1.1)
-    .L.str.3                                 0x800196cc   Data          12  fsl_debug_console.o(.rodata.str1.1)
-    .L.str.5                                 0x800196cc   Data          40  fsl_debug_console.o(.rodata.str1.1)
-    .L.str.4                                 0x800196d8   Data           3  fsl_debug_console.o(.rodata.str1.1)
-    .L.str                                   0x800196f4   Data           6  menu_2init.o(.rodata.str1.1)
-    .L.str.2                                 0x800196f4   Data           3  menu_2init.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x800196f4   Section        0  menu_2init.o(.rodata.str1.1)
-    .L.str.1                                 0x800196f7   Data           3  menu_2init.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80016700   Section        0  para_flash.o(.text.paraflash_init)
+    [Anonymous Symbol]                       0x80016918   Section        0  zf_pit.o(.text.pit_close)
+    [Anonymous Symbol]                       0x80016950   Section        0  zf_pit.o(.text.pit_init)
+    [Anonymous Symbol]                       0x80016980   Section        0  zf_pit.o(.text.pit_interrupt)
+    [Anonymous Symbol]                       0x800169e0   Section        0  zf_pwm.o(.text.pwm_init)
+    [Anonymous Symbol]                       0x80016cd8   Section        0  zf_pwm.o(.text.pwm_iomuxc)
+    [Anonymous Symbol]                       0x800171c0   Section        0  zf_rom_api.o(.text.rom_api_flexspi_nor_flash_erase)
+    [Anonymous Symbol]                       0x80017208   Section        0  zf_rom_api.o(.text.rom_api_flexspi_nor_flash_page_program)
+    [Anonymous Symbol]                       0x80017250   Section        0  zf_rom_api.o(.text.rom_api_flexspi_nor_get_config)
+    [Anonymous Symbol]                       0x80017290   Section        0  zf_rom_api.o(.text.rom_api_init)
+    [Anonymous Symbol]                       0x800172a8   Section        0  zf_systick.o(.text.systick_delay)
+    [Anonymous Symbol]                       0x80017300   Section        0  zf_systick.o(.text.systick_delay_ms)
+    [Anonymous Symbol]                       0x80017340   Section        0  zf_uart.o(.text.uart_init)
+    [Anonymous Symbol]                       0x800173d8   Section        0  zf_uart.o(.text.uart_iomuxc)
+    i.__0sprintf                             0x800177d0   Section        0  printfa.o(i.__0sprintf)
+    i.__ARM_fpclassify                       0x800177f8   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i.__hardfp_modf                          0x80017828   Section        0  modf.o(i.__hardfp_modf)
+    i.__hardfp_pow                           0x800178e8   Section        0  pow.o(i.__hardfp_pow)
+    i.__kernel_poly                          0x800181ac   Section        0  poly.o(i.__kernel_poly)
+    i.__mathlib_dbl_divzero                  0x80018220   Section        0  dunder.o(i.__mathlib_dbl_divzero)
+    i.__mathlib_dbl_infnan2                  0x80018238   Section        0  dunder.o(i.__mathlib_dbl_infnan2)
+    i.__mathlib_dbl_invalid                  0x80018240   Section        0  dunder.o(i.__mathlib_dbl_invalid)
+    i.__mathlib_dbl_overflow                 0x80018258   Section        0  dunder.o(i.__mathlib_dbl_overflow)
+    i.__mathlib_dbl_underflow                0x80018270   Section        0  dunder.o(i.__mathlib_dbl_underflow)
+    i.__set_errno                            0x80018288   Section        0  errno.o(i.__set_errno)
+    _fp_digits                               0x80018295   Thumb Code   366  printfa.o(i._fp_digits)
+    i._fp_digits                             0x80018294   Section        0  printfa.o(i._fp_digits)
+    _printf_core                             0x80018419   Thumb Code  1744  printfa.o(i._printf_core)
+    i._printf_core                           0x80018418   Section        0  printfa.o(i._printf_core)
+    _printf_post_padding                     0x80018af5   Thumb Code    36  printfa.o(i._printf_post_padding)
+    i._printf_post_padding                   0x80018af4   Section        0  printfa.o(i._printf_post_padding)
+    _printf_pre_padding                      0x80018b19   Thumb Code    46  printfa.o(i._printf_pre_padding)
+    i._printf_pre_padding                    0x80018b18   Section        0  printfa.o(i._printf_pre_padding)
+    _sputc                                   0x80018b47   Thumb Code    10  printfa.o(i._sputc)
+    i._sputc                                 0x80018b46   Section        0  printfa.o(i._sputc)
+    i.fabs                                   0x80018b50   Section        0  fabs.o(i.fabs)
+    i.sqrt                                   0x80018b68   Section        0  sqrt.o(i.sqrt)
+    bp                                       0x80018bd8   Data          16  pow.o(.constdata)
+    .constdata                               0x80018bd8   Section      136  pow.o(.constdata)
+    dp_h                                     0x80018be8   Data          16  pow.o(.constdata)
+    dp_l                                     0x80018bf8   Data          16  pow.o(.constdata)
+    L                                        0x80018c08   Data          48  pow.o(.constdata)
+    P                                        0x80018c38   Data          40  pow.o(.constdata)
+    .constdata                               0x80018c60   Section        8  qnan.o(.constdata)
+    .L__const.CLOCK_GetPllFreq.enetRefClkFreq 0x80018c70   Data          16  fsl_clock.o(.rodata.cst16)
+    s_LpuartAdapterBase                      0x80018c80   Data          36  lpuart_adapter.o(.rodata.s_LpuartAdapterBase)
+    [Anonymous Symbol]                       0x80018c80   Section        0  lpuart_adapter.o(.rodata.s_LpuartAdapterBase)
+    s_enetBases                              0x80018ca4   Data          12  fsl_enet.o(.rodata.s_enetBases)
+    [Anonymous Symbol]                       0x80018ca4   Section        0  fsl_enet.o(.rodata.s_enetBases)
+    s_gpioBases                              0x80018cb0   Data          40  fsl_gpio.o(.rodata.s_gpioBases)
+    [Anonymous Symbol]                       0x80018cb0   Section        0  fsl_gpio.o(.rodata.s_gpioBases)
+    s_gpioClock                              0x80018cd8   Data          12  fsl_gpio.o(.rodata.s_gpioClock)
+    [Anonymous Symbol]                       0x80018cd8   Section        0  fsl_gpio.o(.rodata.s_gpioClock)
+    s_gptBases                               0x80018ce4   Data          12  fsl_gpt.o(.rodata.s_gptBases)
+    [Anonymous Symbol]                       0x80018ce4   Section        0  fsl_gpt.o(.rodata.s_gptBases)
+    s_gptClocks                              0x80018cf0   Data           6  fsl_gpt.o(.rodata.s_gptClocks)
+    [Anonymous Symbol]                       0x80018cf0   Section        0  fsl_gpt.o(.rodata.s_gptClocks)
+    s_lpuartBases                            0x80018cf8   Data          36  fsl_lpuart.o(.rodata.s_lpuartBases)
+    [Anonymous Symbol]                       0x80018cf8   Section        0  fsl_lpuart.o(.rodata.s_lpuartBases)
+    s_lpuartClock                            0x80018d1c   Data          18  fsl_lpuart.o(.rodata.s_lpuartClock)
+    [Anonymous Symbol]                       0x80018d1c   Section        0  fsl_lpuart.o(.rodata.s_lpuartClock)
+    s_pitBases                               0x80018d30   Data           4  fsl_pit.o(.rodata.s_pitBases)
+    [Anonymous Symbol]                       0x80018d30   Section        0  fsl_pit.o(.rodata.s_pitBases)
+    s_pitClocks                              0x80018d34   Data           2  fsl_pit.o(.rodata.s_pitClocks)
+    [Anonymous Symbol]                       0x80018d34   Section        0  fsl_pit.o(.rodata.s_pitClocks)
+    s_pwmBases                               0x80018d38   Data          20  fsl_pwm.o(.rodata.s_pwmBases)
+    [Anonymous Symbol]                       0x80018d38   Section        0  fsl_pwm.o(.rodata.s_pwmBases)
+    s_pwmClocks                              0x80018d4c   Data          40  fsl_pwm.o(.rodata.s_pwmClocks)
+    [Anonymous Symbol]                       0x80018d4c   Section        0  fsl_pwm.o(.rodata.s_pwmClocks)
+    s_usdhcBase                              0x80018d74   Data          12  fsl_usdhc.o(.rodata.s_usdhcBase)
+    [Anonymous Symbol]                       0x80018d74   Section        0  fsl_usdhc.o(.rodata.s_usdhcBase)
+    .L.str.12                                0x80018d80   Data          13  clock_config.o(.rodata.str1.1)
+    .L.str.14                                0x80018d80   Data          13  clock_config.o(.rodata.str1.1)
+    .L.str.2                                 0x80018d80   Data          13  clock_config.o(.rodata.str1.1)
+    .L.str.2                                 0x80018d80   Data          13  clock_config.o(.rodata.str1.1)
+    .L.str.2                                 0x80018d80   Data          13  clock_config.o(.rodata.str1.1)
+    .L.str.3                                 0x80018d80   Data          13  clock_config.o(.rodata.str1.1)
+    .L.str.3                                 0x80018d80   Data          13  clock_config.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80018d80   Section        0  clock_config.o(.rodata.str1.1)
+    .L.str                                   0x80018d8d   Data          30  clock_config.o(.rodata.str1.1)
+    .L.str.1                                 0x80018dab   Data          49  clock_config.o(.rodata.str1.1)
+    .L.str.13                                0x80018dab   Data          49  clock_config.o(.rodata.str1.1)
+    .L.str.15                                0x80018dab   Data          49  clock_config.o(.rodata.str1.1)
+    .L.str.3                                 0x80018dab   Data          49  clock_config.o(.rodata.str1.1)
+    .L.str.3                                 0x80018dab   Data          49  clock_config.o(.rodata.str1.1)
+    .L.str.4                                 0x80018dab   Data          49  clock_config.o(.rodata.str1.1)
+    .L.str.4                                 0x80018dab   Data          49  clock_config.o(.rodata.str1.1)
+    .L.str.1                                 0x80018ddc   Data          73  serial_manager.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80018ddc   Section        0  serial_manager.o(.rodata.str1.1)
+    .L.str.5                                 0x80018e25   Data          11  serial_manager.o(.rodata.str1.1)
+    .L.str.3                                 0x80018e30   Data          12  serial_manager.o(.rodata.str1.1)
+    .L.str.2                                 0x80018e3c   Data          13  serial_manager.o(.rodata.str1.1)
+    .L.str.2                                 0x80018e3c   Data          13  serial_manager.o(.rodata.str1.1)
+    .L.str                                   0x80018e49   Data           7  serial_manager.o(.rodata.str1.1)
+    .L.str.4                                 0x80018e49   Data           7  serial_manager.o(.rodata.str1.1)
+    .L.str.4                                 0x80018e50   Data           7  serial_manager.o(.rodata.str1.1)
+    .L.str.6                                 0x80018e50   Data           7  serial_manager.o(.rodata.str1.1)
+    .L.str.8                                 0x80018e50   Data           7  serial_manager.o(.rodata.str1.1)
+    .L.str.3                                 0x80018e57   Data           7  serial_manager.o(.rodata.str1.1)
+    .L.str.6                                 0x80018e57   Data          61  serial_manager.o(.rodata.str1.1)
+    .L.str.7                                 0x80018e57   Data           7  serial_manager.o(.rodata.str1.1)
+    .L.str.1                                 0x80018e5e   Data          75  serial_port_uart.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80018e5e   Section        0  serial_port_uart.o(.rodata.str1.1)
+    .L.str                                   0x80018ea9   Data          13  serial_port_uart.o(.rodata.str1.1)
+    .L.str.3                                 0x80018eb6   Data          73  lpuart_adapter.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80018eb6   Section        0  lpuart_adapter.o(.rodata.str1.1)
+    .L.str.4                                 0x80018eff   Data          38  lpuart_adapter.o(.rodata.str1.1)
+    .L.str.1                                 0x80018f25   Data          63  lpuart_adapter.o(.rodata.str1.1)
+    .L.str.1                                 0x80018f64   Data          49  fsl_clock.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80018f64   Section        0  fsl_clock.o(.rodata.str1.1)
+    .L.str                                   0x80018f95   Data          15  fsl_clock.o(.rodata.str1.1)
+    .L.str.2                                 0x80018fa4   Data           6  fsl_clock.o(.rodata.str1.1)
+    .L.str.2                                 0x80018fa4   Data           6  fsl_clock.o(.rodata.str1.1)
+    .L.str                                   0x80018faa   Data          52  fsl_edma.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80018faa   Section        0  fsl_edma.o(.rodata.str1.1)
+    .L.str.7                                 0x80018fde   Data          15  fsl_edma.o(.rodata.str1.1)
+    .L.str.1                                 0x80018fed   Data          48  fsl_edma.o(.rodata.str1.1)
+    .L.str.2                                 0x8001900e   Data          12  fsl_edma.o(.rodata.str1.1)
+    .L.str.3                                 0x8001901a   Data          30  fsl_edma.o(.rodata.str1.1)
+    .L.str                                   0x8001901d   Data          35  fsl_enet.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x8001901d   Section        0  fsl_enet.o(.rodata.str1.1)
+    .L.str.4                                 0x80019038   Data          15  fsl_edma.o(.rodata.str1.1)
+    .L.str.1                                 0x80019040   Data          48  fsl_enet.o(.rodata.str1.1)
+    .L.str.5                                 0x80019047   Data          34  fsl_edma.o(.rodata.str1.1)
+    .L.str.6                                 0x80019069   Data          58  fsl_edma.o(.rodata.str1.1)
+    .L.str                                   0x80019070   Data          38  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.2                                 0x80019070   Data          15  fsl_enet.o(.rodata.str1.1)
+    .L.str.24                                0x80019070   Data          27  fsl_flexcan.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80019070   Section        0  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.3                                 0x8001907f   Data          15  fsl_enet.o(.rodata.str1.1)
+    .L.str.25                                0x8001908b   Data          27  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.4                                 0x8001908e   Data          21  fsl_enet.o(.rodata.str1.1)
+    .L.str.5                                 0x800190a3   Data          16  fsl_enet.o(.rodata.str1.1)
+    .L.str.26                                0x800190a6   Data          27  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.8                                 0x800190b2   Data          34  fsl_edma.o(.rodata.str1.1)
+    .L.str.6                                 0x800190b3   Data          51  fsl_enet.o(.rodata.str1.1)
+    .L.str.1                                 0x800190c1   Data          51  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.2                                 0x800190c9   Data          16  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.9                                 0x800190d4   Data          16  fsl_edma.o(.rodata.str1.1)
+    .L.str.3                                 0x800190d9   Data         117  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.10                                0x800190e4   Data          17  fsl_edma.o(.rodata.str1.1)
+    .L.str.7                                 0x800190e6   Data          18  fsl_enet.o(.rodata.str1.1)
+    .L.str.2                                 0x800190f4   Data          35  fsl_gpio.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x800190f4   Section        0  fsl_gpio.o(.rodata.str1.1)
+    .L.str.11                                0x800190f5   Data         119  fsl_edma.o(.rodata.str1.1)
+    .L.str.8                                 0x800190f8   Data          31  fsl_enet.o(.rodata.str1.1)
+    .L.str                                   0x80019117   Data          10  fsl_gpio.o(.rodata.str1.1)
+    .L.str                                   0x80019117   Data          10  fsl_gpio.o(.rodata.str1.1)
+    .L.str.3                                 0x80019117   Data          10  fsl_gpio.o(.rodata.str1.1)
+    .L.str.9                                 0x80019117   Data          21  fsl_enet.o(.rodata.str1.1)
+    .L.str.1                                 0x80019121   Data          48  fsl_gpio.o(.rodata.str1.1)
+    .L.str.10                                0x8001912c   Data          15  fsl_enet.o(.rodata.str1.1)
+    .L.str.11                                0x8001913b   Data          13  fsl_enet.o(.rodata.str1.1)
+    .L.str.12                                0x80019148   Data          16  fsl_enet.o(.rodata.str1.1)
+    .L.str.4                                 0x8001914e   Data          27  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.5                                 0x80019151   Data          34  fsl_gpt.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80019151   Section        0  fsl_gpt.o(.rodata.str1.1)
+    .L.str.13                                0x80019158   Data          13  fsl_enet.o(.rodata.str1.1)
+    .L.str.14                                0x80019165   Data          49  fsl_enet.o(.rodata.str1.1)
+    .L.str.5                                 0x80019169   Data          25  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.12                                0x8001916c   Data         125  fsl_edma.o(.rodata.str1.1)
+    .L.str                                   0x80019173   Data          38  fsl_gpt.o(.rodata.str1.1)
+    .L.str.6                                 0x80019173   Data          38  fsl_gpt.o(.rodata.str1.1)
+    .L.str.6                                 0x80019182   Data          44  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.15                                0x80019196   Data          71  fsl_enet.o(.rodata.str1.1)
+    .L.str.1                                 0x80019199   Data          47  fsl_gpt.o(.rodata.str1.1)
+    .L.str.7                                 0x800191ae   Data          42  fsl_flexcan.o(.rodata.str1.1)
+    .L.str                                   0x800191c8   Data          19  fsl_gpt.o(.rodata.str1.1)
+    .L.str.8                                 0x800191d8   Data          35  fsl_flexcan.o(.rodata.str1.1)
+    .L.str                                   0x800191db   Data          15  fsl_gpt.o(.rodata.str1.1)
+    .L.str                                   0x800191db   Data          15  fsl_gpt.o(.rodata.str1.1)
+    .L.str.2                                 0x800191db   Data          15  fsl_gpt.o(.rodata.str1.1)
+    .L.str.3                                 0x800191db   Data          15  fsl_gpt.o(.rodata.str1.1)
+    .L.str.16                                0x800191dd   Data          51  fsl_enet.o(.rodata.str1.1)
+    .L.str                                   0x800191e3   Data           7  fsl_gpt.o(.rodata.str1.1)
+    .L.str                                   0x800191e3   Data           7  fsl_gpt.o(.rodata.str1.1)
+    .L.str.2                                 0x800191e3   Data           7  fsl_gpt.o(.rodata.str1.1)
+    .L.str.13                                0x800191e9   Data          41  fsl_edma.o(.rodata.str1.1)
+    .L.str.7                                 0x800191ea   Data          47  fsl_gpt.o(.rodata.str1.1)
+    .L.str.9                                 0x800191fb   Data          29  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.17                                0x80019210   Data          42  fsl_enet.o(.rodata.str1.1)
+    .L.str.14                                0x80019212   Data           6  fsl_edma.o(.rodata.str1.1)
+    .L.str.10                                0x80019218   Data          33  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.15                                0x80019218   Data          13  fsl_edma.o(.rodata.str1.1)
+    .L.str                                   0x80019219   Data          36  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.8                                 0x80019219   Data          17  fsl_lpspi.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80019219   Section        0  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.16                                0x80019225   Data          49  fsl_edma.o(.rodata.str1.1)
+    .L.str.9                                 0x8001922a   Data          17  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.11                                0x80019239   Data          45  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.18                                0x8001923a   Data           6  fsl_enet.o(.rodata.str1.1)
+    .L.str.10                                0x8001923b   Data          17  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.11                                0x8001924c   Data          17  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.17                                0x80019256   Data          35  fsl_edma.o(.rodata.str1.1)
+    .L.str.1                                 0x8001925d   Data          49  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.12                                0x80019266   Data          45  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.2                                 0x8001926e   Data          13  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.18                                0x80019279   Data          29  fsl_edma.o(.rodata.str1.1)
+    .L.str.3                                 0x8001927b   Data          12  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.4                                 0x80019287   Data          17  fsl_lpspi.o(.rodata.str1.1)
+    .L.str                                   0x8001928e   Data          37  fsl_lpuart.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x8001928e   Section        0  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.13                                0x80019293   Data          35  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.5                                 0x80019298   Data           6  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.6                                 0x8001929e   Data           7  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.7                                 0x800192a5   Data           9  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.8                                 0x800192b3   Data          13  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.14                                0x800192b6   Data          37  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.5                                 0x800192bb   Data           5  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.1                                 0x800192c0   Data          50  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.15                                0x800192db   Data           6  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.16                                0x800192e1   Data          17  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.2                                 0x800192e5   Data          15  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.12                                0x800192f2   Data          13  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.17                                0x800192f2   Data          23  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.6                                 0x800192f2   Data          72  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.13                                0x800192ff   Data          49  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.18                                0x80019309   Data          17  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.19                                0x8001931a   Data          15  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.20                                0x80019329   Data          16  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.14                                0x80019330   Data           7  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.15                                0x80019337   Data           7  fsl_lpspi.o(.rodata.str1.1)
+    .L.str.21                                0x80019339   Data          51  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.5                                 0x8001933a   Data          72  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.22                                0x8001936c   Data          44  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.4                                 0x80019382   Data          26  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.23                                0x80019398   Data          18  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.4                                 0x8001939c   Data          34  fsl_pit.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x8001939c   Section        0  fsl_pit.o(.rodata.str1.1)
+    .L.str.7                                 0x800193ad   Data          18  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.1                                 0x800193be   Data          47  fsl_pit.o(.rodata.str1.1)
+    .L.str.9                                 0x800193cc   Data          19  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.10                                0x800193df   Data          13  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.11                                0x800193ec   Data          19  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.14                                0x800193ed   Data          34  fsl_pwm.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x800193ed   Section        0  fsl_pwm.o(.rodata.str1.1)
+    .L.str.27                                0x800193fb   Data          13  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.12                                0x800193ff   Data          21  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.28                                0x80019408   Data          49  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.7                                 0x8001940f   Data          45  fsl_pwm.o(.rodata.str1.1)
+    .L.str.13                                0x80019414   Data          14  fsl_lpuart.o(.rodata.str1.1)
+    .L.str.29                                0x80019439   Data          38  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.1                                 0x8001943c   Data          47  fsl_pwm.o(.rodata.str1.1)
+    .L.str.30                                0x8001945f   Data          25  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.5                                 0x8001946b   Data          11  fsl_pwm.o(.rodata.str1.1)
+    .L.str.3                                 0x80019476   Data          11  fsl_pwm.o(.rodata.str1.1)
+    .L.str.31                                0x80019478   Data          25  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.6                                 0x80019481   Data          12  fsl_pwm.o(.rodata.str1.1)
+    .L.str.8                                 0x80019483   Data          33  fsl_pwm.o(.rodata.str1.1)
+    .L.str.4                                 0x8001948d   Data          11  fsl_pwm.o(.rodata.str1.1)
+    .L.str.32                                0x80019491   Data          27  fsl_flexcan.o(.rodata.str1.1)
+    .L.str                                   0x80019498   Data          30  fsl_sai.o(.rodata.str1.1)
+    .L.str.14                                0x80019498   Data          26  fsl_sai.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80019498   Section        0  fsl_sai.o(.rodata.str1.1)
+    .L.str.9                                 0x800194a4   Data          25  fsl_pwm.o(.rodata.str1.1)
+    .L.str.33                                0x800194ac   Data          38  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.15                                0x800194b2   Data          26  fsl_sai.o(.rodata.str1.1)
+    .L.str.10                                0x800194bd   Data          31  fsl_pwm.o(.rodata.str1.1)
+    .L.str.1                                 0x800194cc   Data          47  fsl_sai.o(.rodata.str1.1)
+    .L.str.34                                0x800194d2   Data          39  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.11                                0x800194dc   Data          12  fsl_pwm.o(.rodata.str1.1)
+    .L.str.2                                 0x800194e5   Data          15  fsl_sai.o(.rodata.str1.1)
+    .L.str.3                                 0x800194f4   Data          67  fsl_sai.o(.rodata.str1.1)
+    .L.str.35                                0x800194f9   Data          38  fsl_flexcan.o(.rodata.str1.1)
+    .L.str                                   0x800194fb   Data          15  fsl_sdmmc_host.o(.rodata.str1.1)
+    .L.str.1                                 0x800194fb   Data          48  fsl_sdmmc_host.o(.rodata.str1.1)
+    .L.str.4                                 0x800194fb   Data          48  fsl_sdmmc_host.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x800194fb   Section        0  fsl_sdmmc_host.o(.rodata.str1.1)
+    .L.str.2                                 0x8001950a   Data          85  fsl_sdmmc_host.o(.rodata.str1.1)
+    .L.str.36                                0x8001951f   Data          40  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.3                                 0x8001952b   Data          25  zf_flash.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x8001952b   Section        0  zf_flash.o(.rodata.str1.1)
+    .L.str.4                                 0x80019537   Data          78  fsl_sai.o(.rodata.str1.1)
+    .L.str.1                                 0x80019544   Data          46  zf_flash.o(.rodata.str1.1)
+    .L.str.37                                0x80019547   Data          74  fsl_flexcan.o(.rodata.str1.1)
+    .L.str.2                                 0x80019572   Data          31  zf_flash.o(.rodata.str1.1)
+    .L.str.5                                 0x80019585   Data          78  fsl_sai.o(.rodata.str1.1)
+    .L.str                                   0x80019591   Data          28  zf_flash.o(.rodata.str1.1)
+    .L.str                                   0x800195ad   Data           2  zf_iomuxc.o(.rodata.str1.1)
+    .L.str                                   0x800195ad   Data           2  zf_iomuxc.o(.rodata.str1.1)
+    .L.str                                   0x800195ad   Data           2  zf_iomuxc.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x800195ad   Section        0  zf_iomuxc.o(.rodata.str1.1)
+    .L.str.1                                 0x800195af   Data          47  zf_iomuxc.o(.rodata.str1.1)
+    .L.str.6                                 0x800195d3   Data          43  fsl_sai.o(.rodata.str1.1)
+    .L.str.1                                 0x800195de   Data          47  zf_pit.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x800195de   Section        0  zf_pit.o(.rodata.str1.1)
+    .L.str.7                                 0x800195fe   Data          15  fsl_sai.o(.rodata.str1.1)
+    .L.str.1                                 0x8001960d   Data          44  zf_pwm.o(.rodata.str1.1)
+    .L.str.8                                 0x8001960d   Data          70  fsl_sai.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x8001960d   Section        0  zf_pwm.o(.rodata.str1.1)
+    .L.str.2                                 0x80019639   Data          39  zf_systick.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80019639   Section        0  zf_systick.o(.rodata.str1.1)
+    .L.str.9                                 0x80019653   Data          15  fsl_sai.o(.rodata.str1.1)
+    .L.str.1                                 0x80019660   Data          47  zf_systick.o(.rodata.str1.1)
+    .L.str.10                                0x80019662   Data          21  fsl_sai.o(.rodata.str1.1)
+    .L.str.11                                0x80019677   Data           6  fsl_sai.o(.rodata.str1.1)
+    .L.str.12                                0x8001967d   Data          19  fsl_sai.o(.rodata.str1.1)
+    .L.str.1                                 0x8001968f   Data          45  zf_uart.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x8001968f   Section        0  zf_uart.o(.rodata.str1.1)
+    .L.str.13                                0x80019690   Data          70  fsl_sai.o(.rodata.str1.1)
+    .L.str                                   0x800196bc   Data           3  seekfree_ips200_parallel8.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x800196bc   Section        0  seekfree_ips200_parallel8.o(.rodata.str1.1)
+    .L.str.1                                 0x800196bf   Data           3  seekfree_ips200_parallel8.o(.rodata.str1.1)
+    .L.str                                   0x800196c2   Data          43  fsl_assert.o(.rodata.str1.1)
+    .L.str.2                                 0x800196c2   Data           2  seekfree_ips200_parallel8.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x800196c2   Section        0  fsl_assert.o(.rodata.str1.1)
+    .L.str.3                                 0x800196c4   Data          64  seekfree_ips200_parallel8.o(.rodata.str1.1)
+    .L.str.1                                 0x800196ed   Data          74  fsl_debug_console.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x800196ed   Section        0  fsl_debug_console.o(.rodata.str1.1)
+    .L.str.16                                0x8001970a   Data          13  fsl_sai.o(.rodata.str1.1)
+    .L.str.17                                0x80019717   Data          49  fsl_sai.o(.rodata.str1.1)
+    .L.str.2                                 0x80019737   Data          10  fsl_debug_console.o(.rodata.str1.1)
+    .L.str                                   0x80019741   Data          11  fsl_debug_console.o(.rodata.str1.1)
+    .L.str.18                                0x80019748   Data          34  fsl_sai.o(.rodata.str1.1)
+    .L.str.3                                 0x8001974c   Data          12  fsl_debug_console.o(.rodata.str1.1)
+    .L.str.5                                 0x8001974c   Data          40  fsl_debug_console.o(.rodata.str1.1)
+    .L.str.4                                 0x80019758   Data           3  fsl_debug_console.o(.rodata.str1.1)
+    .L.str                                   0x80019774   Data           6  menu_2init.o(.rodata.str1.1)
+    .L.str.2                                 0x80019774   Data           3  menu_2init.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x80019774   Section        0  menu_2init.o(.rodata.str1.1)
+    .L.str.1                                 0x80019777   Data           3  menu_2init.o(.rodata.str1.1)
 
     Global Symbols
 
@@ -13998,41 +14014,41 @@ Image Symbol Table
     menu_select                              0x800161a9   Thumb Code   332  menu.o(.text.menu_select)
     monitor                                  0x80016461   Thumb Code    84  menu_2.o(.text.monitor)
     mt9v03x_vsync                            0x800164b9   Thumb Code    34  seekfree_mt9v03x.o(.text.mt9v03x_vsync)
-    para_reset                               0x800164e1   Thumb Code   464  para_flash.o(.text.para_reset)
-    paraflash_init                           0x800166b1   Thumb Code   482  para_flash.o(.text.paraflash_init)
-    pit_close                                0x80016899   Thumb Code    54  zf_pit.o(.text.pit_close)
-    pit_init                                 0x800168d1   Thumb Code    46  zf_pit.o(.text.pit_init)
-    pit_interrupt                            0x80016901   Thumb Code    96  zf_pit.o(.text.pit_interrupt)
-    pwm_init                                 0x80016961   Thumb Code   760  zf_pwm.o(.text.pwm_init)
-    pwm_iomuxc                               0x80016c59   Thumb Code  1256  zf_pwm.o(.text.pwm_iomuxc)
-    rom_api_flexspi_nor_flash_erase          0x80017141   Thumb Code    72  zf_rom_api.o(.text.rom_api_flexspi_nor_flash_erase)
-    rom_api_flexspi_nor_flash_page_program   0x80017189   Thumb Code    72  zf_rom_api.o(.text.rom_api_flexspi_nor_flash_page_program)
-    rom_api_flexspi_nor_get_config           0x800171d1   Thumb Code    62  zf_rom_api.o(.text.rom_api_flexspi_nor_get_config)
-    rom_api_init                             0x80017211   Thumb Code    20  zf_rom_api.o(.text.rom_api_init)
-    systick_delay                            0x80017229   Thumb Code    82  zf_systick.o(.text.systick_delay)
-    systick_delay_ms                         0x80017281   Thumb Code    58  zf_systick.o(.text.systick_delay_ms)
-    uart_init                                0x800172c1   Thumb Code   152  zf_uart.o(.text.uart_init)
-    uart_iomuxc                              0x80017359   Thumb Code  1016  zf_uart.o(.text.uart_iomuxc)
-    __0sprintf                               0x80017751   Thumb Code    34  printfa.o(i.__0sprintf)
-    __1sprintf                               0x80017751   Thumb Code     0  printfa.o(i.__0sprintf)
-    __2sprintf                               0x80017751   Thumb Code     0  printfa.o(i.__0sprintf)
-    __c89sprintf                             0x80017751   Thumb Code     0  printfa.o(i.__0sprintf)
-    sprintf                                  0x80017751   Thumb Code     0  printfa.o(i.__0sprintf)
-    __ARM_fpclassify                         0x80017779   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
-    __hardfp_modf                            0x800177a9   Thumb Code   186  modf.o(i.__hardfp_modf)
-    __hardfp_pow                             0x80017869   Thumb Code  2108  pow.o(i.__hardfp_pow)
-    __kernel_poly                            0x8001812d   Thumb Code   112  poly.o(i.__kernel_poly)
-    __mathlib_dbl_divzero                    0x800181a1   Thumb Code    14  dunder.o(i.__mathlib_dbl_divzero)
-    __mathlib_dbl_infnan2                    0x800181b9   Thumb Code     6  dunder.o(i.__mathlib_dbl_infnan2)
-    __mathlib_dbl_invalid                    0x800181c1   Thumb Code    10  dunder.o(i.__mathlib_dbl_invalid)
-    __mathlib_dbl_overflow                   0x800181d9   Thumb Code    10  dunder.o(i.__mathlib_dbl_overflow)
-    __mathlib_dbl_underflow                  0x800181f1   Thumb Code    10  dunder.o(i.__mathlib_dbl_underflow)
-    __set_errno                              0x80018209   Thumb Code     6  errno.o(i.__set_errno)
-    fabs                                     0x80018ad1   Thumb Code    24  fabs.o(i.fabs)
-    sqrt                                     0x80018ae9   Thumb Code   106  sqrt.o(i.sqrt)
-    __mathlib_zero                           0x80018be0   Data           8  qnan.o(.constdata)
-    armPllConfig_BOARD_BootClockRUN          0x80018be8   Data           8  clock_config.o(.rodata.armPllConfig_BOARD_BootClockRUN)
-    tft_ascii                                0x800196fa   Data        1520  seekfree_font.o(.rodata.tft_ascii)
+    para_reset                               0x800164e1   Thumb Code   538  para_flash.o(.text.para_reset)
+    paraflash_init                           0x80016701   Thumb Code   532  para_flash.o(.text.paraflash_init)
+    pit_close                                0x80016919   Thumb Code    54  zf_pit.o(.text.pit_close)
+    pit_init                                 0x80016951   Thumb Code    46  zf_pit.o(.text.pit_init)
+    pit_interrupt                            0x80016981   Thumb Code    96  zf_pit.o(.text.pit_interrupt)
+    pwm_init                                 0x800169e1   Thumb Code   760  zf_pwm.o(.text.pwm_init)
+    pwm_iomuxc                               0x80016cd9   Thumb Code  1256  zf_pwm.o(.text.pwm_iomuxc)
+    rom_api_flexspi_nor_flash_erase          0x800171c1   Thumb Code    72  zf_rom_api.o(.text.rom_api_flexspi_nor_flash_erase)
+    rom_api_flexspi_nor_flash_page_program   0x80017209   Thumb Code    72  zf_rom_api.o(.text.rom_api_flexspi_nor_flash_page_program)
+    rom_api_flexspi_nor_get_config           0x80017251   Thumb Code    62  zf_rom_api.o(.text.rom_api_flexspi_nor_get_config)
+    rom_api_init                             0x80017291   Thumb Code    20  zf_rom_api.o(.text.rom_api_init)
+    systick_delay                            0x800172a9   Thumb Code    82  zf_systick.o(.text.systick_delay)
+    systick_delay_ms                         0x80017301   Thumb Code    58  zf_systick.o(.text.systick_delay_ms)
+    uart_init                                0x80017341   Thumb Code   152  zf_uart.o(.text.uart_init)
+    uart_iomuxc                              0x800173d9   Thumb Code  1016  zf_uart.o(.text.uart_iomuxc)
+    __0sprintf                               0x800177d1   Thumb Code    34  printfa.o(i.__0sprintf)
+    __1sprintf                               0x800177d1   Thumb Code     0  printfa.o(i.__0sprintf)
+    __2sprintf                               0x800177d1   Thumb Code     0  printfa.o(i.__0sprintf)
+    __c89sprintf                             0x800177d1   Thumb Code     0  printfa.o(i.__0sprintf)
+    sprintf                                  0x800177d1   Thumb Code     0  printfa.o(i.__0sprintf)
+    __ARM_fpclassify                         0x800177f9   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
+    __hardfp_modf                            0x80017829   Thumb Code   186  modf.o(i.__hardfp_modf)
+    __hardfp_pow                             0x800178e9   Thumb Code  2108  pow.o(i.__hardfp_pow)
+    __kernel_poly                            0x800181ad   Thumb Code   112  poly.o(i.__kernel_poly)
+    __mathlib_dbl_divzero                    0x80018221   Thumb Code    14  dunder.o(i.__mathlib_dbl_divzero)
+    __mathlib_dbl_infnan2                    0x80018239   Thumb Code     6  dunder.o(i.__mathlib_dbl_infnan2)
+    __mathlib_dbl_invalid                    0x80018241   Thumb Code    10  dunder.o(i.__mathlib_dbl_invalid)
+    __mathlib_dbl_overflow                   0x80018259   Thumb Code    10  dunder.o(i.__mathlib_dbl_overflow)
+    __mathlib_dbl_underflow                  0x80018271   Thumb Code    10  dunder.o(i.__mathlib_dbl_underflow)
+    __set_errno                              0x80018289   Thumb Code     6  errno.o(i.__set_errno)
+    fabs                                     0x80018b51   Thumb Code    24  fabs.o(i.fabs)
+    sqrt                                     0x80018b69   Thumb Code   106  sqrt.o(i.sqrt)
+    __mathlib_zero                           0x80018c60   Data           8  qnan.o(.constdata)
+    armPllConfig_BOARD_BootClockRUN          0x80018c68   Data           8  clock_config.o(.rodata.armPllConfig_BOARD_BootClockRUN)
+    tft_ascii                                0x8001977a   Data        1520  seekfree_font.o(.rodata.tft_ascii)
 
 
 
@@ -14064,18 +14080,18 @@ Memory Map of the image
 
 
 
-  Load Region LR_m_text (Base: 0x70002000, Size: 0x0001ac7c, Max: 0x703ffc00, ABSOLUTE, COMPRESSED[0x0001aa60])
+  Load Region LR_m_text (Base: 0x70002000, Size: 0x0001acfc, Max: 0x703ffc00, ABSOLUTE, COMPRESSED[0x0001aae0])
 
-    Execution Region ITCM_ncache (Exec base: 0x00000000, Load base: 0x7001ca60, Size: 0x00000000, Max: 0x00010000, ABSOLUTE)
+    Execution Region ITCM_ncache (Exec base: 0x00000000, Load base: 0x7001cae0, Size: 0x00000000, Max: 0x00010000, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region RW_m_data (Exec base: 0x20000000, Load base: 0x7001c1ec, Size: 0x000013e0, Max: 0x0006ec00, ABSOLUTE, COMPRESSED[0x00000874])
+    Execution Region RW_m_data (Exec base: 0x20000000, Load base: 0x7001c26c, Size: 0x000013e0, Max: 0x0006ec00, ABSOLUTE, COMPRESSED[0x00000874])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   COMPRESSED   0x00000004   Data   RW         6148    .data               mc_w.l(errno.o)
+    0x20000000   COMPRESSED   0x00000004   Data   RW         6150    .data               mc_w.l(errno.o)
     0x20000004   COMPRESSED   0x00000028   Data   RW         4542    .data.PORTPTR       zf_gpio.o
     0x2000002c   COMPRESSED   0x00000014   Data   RW         4657    .data.PWMPTR        zf_pwm.o
     0x20000040   COMPRESSED   0x00000004   Data   RW          297    .data.SystemCoreClock  system_mimxrt1064.o
@@ -14179,21 +14195,21 @@ Memory Map of the image
     0x200013de        -       0x00000002   Zero   RW         5835    .bss.yawa           data.o
 
 
-    Execution Region ARM_LIB_HEAP (Exec base: 0x200013e0, Load base: 0x7001ca60, Size: 0x00000400, Max: 0x00000400, ABSOLUTE)
+    Execution Region ARM_LIB_HEAP (Exec base: 0x200013e0, Load base: 0x7001cae0, Size: 0x00000400, Max: 0x00000400, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x200013e0        -       0x00000400   Zero   RW            2    ARM_LIB_HEAP.bss    anon$$obj.o
 
 
-    Execution Region ARM_LIB_STACK (Exec base: 0x2006f000, Load base: 0x7001ca60, Size: 0x00001000, Max: 0x00001000, ABSOLUTE)
+    Execution Region ARM_LIB_STACK (Exec base: 0x2006f000, Load base: 0x7001cae0, Size: 0x00001000, Max: 0x00001000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x2006f000        -       0x00001000   Zero   RW            3    ARM_LIB_STACK.bss   anon$$obj.o
 
 
-    Execution Region OCRAM_cache (Exec base: 0x20200000, Load base: 0x7001ca60, Size: 0x00000000, Max: 0x00080000, ABSOLUTE)
+    Execution Region OCRAM_cache (Exec base: 0x20200000, Load base: 0x7001cae0, Size: 0x00000000, Max: 0x00080000, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -14209,25 +14225,25 @@ Memory Map of the image
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x70002400   0x70002400   0x00000000   Code   RO         5998  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x70002400   0x70002400   0x00000004   Code   RO         6118    .ARM.Collect$$$$00000003  mc_w.l(entry4.o)
-    0x70002404   0x70002404   0x00000004   Code   RO         6121    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x70002408   0x70002408   0x00000000   Code   RO         6123    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x70002408   0x70002408   0x00000000   Code   RO         6125    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x70002408   0x70002408   0x00000008   Code   RO         6126    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x70002410   0x70002410   0x00000000   Code   RO         6128    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x70002410   0x70002410   0x00000000   Code   RO         6130    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x70002410   0x70002410   0x00000004   Code   RO         6119    .ARM.Collect$$$$00002714  mc_w.l(entry4.o)
+    0x70002400   0x70002400   0x00000000   Code   RO         6000  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x70002400   0x70002400   0x00000004   Code   RO         6120    .ARM.Collect$$$$00000003  mc_w.l(entry4.o)
+    0x70002404   0x70002404   0x00000004   Code   RO         6123    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x70002408   0x70002408   0x00000000   Code   RO         6125    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x70002408   0x70002408   0x00000000   Code   RO         6127    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x70002408   0x70002408   0x00000008   Code   RO         6128    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x70002410   0x70002410   0x00000000   Code   RO         6130    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x70002410   0x70002410   0x00000000   Code   RO         6132    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x70002410   0x70002410   0x00000004   Code   RO         6121    .ARM.Collect$$$$00002714  mc_w.l(entry4.o)
     0x70002414   0x70002414   0x00000224   Code   RO         5325    .text               startup_mimxrt1064.o
-    0x70002638   0x70002638   0x00000024   Code   RO         6169    .text               mc_w.l(init.o)
+    0x70002638   0x70002638   0x00000024   Code   RO         6171    .text               mc_w.l(init.o)
     0x7000265c   0x7000265c   0x00000004   PAD
     0x70002660   0x70002660   0x0000024e   Code   RO          291    .text.SystemInit    system_mimxrt1064.o
     0x700028ae   0x700028ae   0x00000002   PAD
     0x700028b0   0x700028b0   0x00000002   Code   RO          293    .text.SystemInitHook  system_mimxrt1064.o
-    0x700028b2   0x700028b2   0x0000000e   Code   RO         6194    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x700028c0   0x700028c0   0x00000002   Code   RO         6195    i.__scatterload_null  mc_w.l(handlers.o)
-    0x700028c2   0x700028c2   0x0000000e   Code   RO         6196    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x700028d0   0x700028d0   0x00000030   Data   RO         6193    Region$$Table       anon$$obj.o
+    0x700028b2   0x700028b2   0x0000000e   Code   RO         6196    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x700028c0   0x700028c0   0x00000002   Code   RO         6197    i.__scatterload_null  mc_w.l(handlers.o)
+    0x700028c2   0x700028c2   0x0000000e   Code   RO         6198    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x700028d0   0x700028d0   0x00000030   Data   RO         6195    Region$$Table       anon$$obj.o
 
 
     Execution Region VECTOR_RAM (Exec base: 0x80000000, Load base: 0x70002900, Size: 0x00000400, Max: 0x00000400, ABSOLUTE)
@@ -14237,30 +14253,30 @@ Memory Map of the image
     0x80000000        -       0x00000400   Zero   RW            1    VECTOR_RAM.bss      anon$$obj.o
 
 
-    Execution Region ER_m_ram_text (Exec base: 0x80000400, Load base: 0x70002900, Size: 0x000198ec, Max: 0x01dfdc00, ABSOLUTE)
+    Execution Region ER_m_ram_text (Exec base: 0x80000400, Load base: 0x70002900, Size: 0x0001996c, Max: 0x01dfdc00, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x80000400   0x70002900   0x00000062   Code   RO         6001    .text               mc_w.l(uldiv.o)
-    0x80000462   0x70002962   0x00000062   Code   RO         6003    .text               mc_w.l(ldiv.o)
-    0x800004c4   0x700029c4   0x00000024   Code   RO         6011    .text               mc_w.l(memseta.o)
-    0x800004e8   0x700029e8   0x0000000e   Code   RO         6013    .text               mc_w.l(strlen.o)
-    0x800004f6   0x700029f6   0x00000012   Code   RO         6015    .text               mc_w.l(strcpy.o)
-    0x80000508   0x70002a08   0x00000028   Code   RO         6077    .text               mf_w.l(dfltl.o)
-    0x80000530   0x70002a30   0x0000004a   Code   RO         6079    .text               mf_w.l(dfixl.o)
-    0x8000057a   0x70002a7a   0x0000002c   Code   RO         6137    .text               mc_w.l(uidiv.o)
-    0x800005a6   0x70002aa6   0x0000001e   Code   RO         6139    .text               mc_w.l(llshl.o)
-    0x800005c4   0x70002ac4   0x00000020   Code   RO         6141    .text               mc_w.l(llushr.o)
-    0x800005e4   0x70002ae4   0x00000000   Code   RO         6154    .text               mc_w.l(iusefp.o)
-    0x800005e4   0x70002ae4   0x000000ba   Code   RO         6155    .text               mf_w.l(depilogue.o)
-    0x8000069e   0x70002b9e   0x0000014e   Code   RO         6157    .text               mf_w.l(dadd.o)
-    0x800007ec   0x70002cec   0x000000e4   Code   RO         6159    .text               mf_w.l(dmul.o)
-    0x800008d0   0x70002dd0   0x000000de   Code   RO         6161    .text               mf_w.l(ddiv.o)
-    0x800009ae   0x70002eae   0x0000002e   Code   RO         6163    .text               mf_w.l(dscalb.o)
-    0x800009dc   0x70002edc   0x00000030   Code   RO         6165    .text               mf_w.l(dfixul.o)
-    0x80000a0c   0x70002f0c   0x00000030   Code   RO         6167    .text               mf_w.l(cdrcmple.o)
-    0x80000a3c   0x70002f3c   0x00000024   Code   RO         6172    .text               mc_w.l(llsshr.o)
-    0x80000a60   0x70002f60   0x00000056   Code   RO         6200    .text               mc_w.l(__dczerorl2.o)
+    0x80000400   0x70002900   0x00000062   Code   RO         6003    .text               mc_w.l(uldiv.o)
+    0x80000462   0x70002962   0x00000062   Code   RO         6005    .text               mc_w.l(ldiv.o)
+    0x800004c4   0x700029c4   0x00000024   Code   RO         6013    .text               mc_w.l(memseta.o)
+    0x800004e8   0x700029e8   0x0000000e   Code   RO         6015    .text               mc_w.l(strlen.o)
+    0x800004f6   0x700029f6   0x00000012   Code   RO         6017    .text               mc_w.l(strcpy.o)
+    0x80000508   0x70002a08   0x00000028   Code   RO         6079    .text               mf_w.l(dfltl.o)
+    0x80000530   0x70002a30   0x0000004a   Code   RO         6081    .text               mf_w.l(dfixl.o)
+    0x8000057a   0x70002a7a   0x0000002c   Code   RO         6139    .text               mc_w.l(uidiv.o)
+    0x800005a6   0x70002aa6   0x0000001e   Code   RO         6141    .text               mc_w.l(llshl.o)
+    0x800005c4   0x70002ac4   0x00000020   Code   RO         6143    .text               mc_w.l(llushr.o)
+    0x800005e4   0x70002ae4   0x00000000   Code   RO         6156    .text               mc_w.l(iusefp.o)
+    0x800005e4   0x70002ae4   0x000000ba   Code   RO         6157    .text               mf_w.l(depilogue.o)
+    0x8000069e   0x70002b9e   0x0000014e   Code   RO         6159    .text               mf_w.l(dadd.o)
+    0x800007ec   0x70002cec   0x000000e4   Code   RO         6161    .text               mf_w.l(dmul.o)
+    0x800008d0   0x70002dd0   0x000000de   Code   RO         6163    .text               mf_w.l(ddiv.o)
+    0x800009ae   0x70002eae   0x0000002e   Code   RO         6165    .text               mf_w.l(dscalb.o)
+    0x800009dc   0x70002edc   0x00000030   Code   RO         6167    .text               mf_w.l(dfixul.o)
+    0x80000a0c   0x70002f0c   0x00000030   Code   RO         6169    .text               mf_w.l(cdrcmple.o)
+    0x80000a3c   0x70002f3c   0x00000024   Code   RO         6174    .text               mc_w.l(llsshr.o)
+    0x80000a60   0x70002f60   0x00000056   Code   RO         6202    .text               mc_w.l(__dczerorl2.o)
     0x80000ab6   0x70002fb6   0x00000002   PAD
     0x80000ab8   0x70002fb8   0x00000026   Code   RO           17    .text.ARM_MPU_Disable  board.o
     0x80000ade   0x70002fde   0x00000002   PAD
@@ -14682,7 +14698,7 @@ Memory Map of the image
     0x800084c8   0x7000a9c8   0x00000074   Code   RO         4474    .text.flash_erase_sector  zf_flash.o
     0x8000853c   0x7000aa3c   0x00000004   PAD
     0x80008540   0x7000aa40   0x00000050   Code   RO         4480    .text.flash_init    zf_flash.o
-    0x80008590   0x7000aa90   0x00000146   Code   RO         5963    .text.flash_memory_write  para_flash.o
+    0x80008590   0x7000aa90   0x00000146   Code   RO         5965    .text.flash_memory_write  para_flash.o
     0x800086d6   0x7000abd6   0x00000002   PAD
     0x800086d8   0x7000abd8   0x00000120   Code   RO         4476    .text.flash_page_program  zf_flash.o
     0x800087f8   0x7000acf8   0x000000e6   Code   RO         4478    .text.flash_read_page  zf_flash.o
@@ -14754,99 +14770,100 @@ Memory Map of the image
     0x800164b4   0x700189b4   0x00000004   PAD
     0x800164b8   0x700189b8   0x00000022   Code   RO         5206    .text.mt9v03x_vsync  seekfree_mt9v03x.o
     0x800164da   0x700189da   0x00000006   PAD
-    0x800164e0   0x700189e0   0x000001d0   Code   RO         5959    .text.para_reset    para_flash.o
-    0x800166b0   0x70018bb0   0x000001e2   Code   RO         5961    .text.paraflash_init  para_flash.o
-    0x80016892   0x70018d92   0x00000006   PAD
-    0x80016898   0x70018d98   0x00000036   Code   RO         4631    .text.pit_close     zf_pit.o
-    0x800168ce   0x70018dce   0x00000002   PAD
-    0x800168d0   0x70018dd0   0x0000002e   Code   RO         4601    .text.pit_init      zf_pit.o
-    0x800168fe   0x70018dfe   0x00000002   PAD
-    0x80016900   0x70018e00   0x00000060   Code   RO         4605    .text.pit_interrupt  zf_pit.o
-    0x80016960   0x70018e60   0x000002f8   Code   RO         4646    .text.pwm_init      zf_pwm.o
-    0x80016c58   0x70019158   0x000004e8   Code   RO         4644    .text.pwm_iomuxc    zf_pwm.o
-    0x80017140   0x70019640   0x00000048   Code   RO         4810    .text.rom_api_flexspi_nor_flash_erase  zf_rom_api.o
-    0x80017188   0x70019688   0x00000048   Code   RO         4804    .text.rom_api_flexspi_nor_flash_page_program  zf_rom_api.o
-    0x800171d0   0x700196d0   0x0000003e   Code   RO         4808    .text.rom_api_flexspi_nor_get_config  zf_rom_api.o
-    0x8001720e   0x7001970e   0x00000002   PAD
-    0x80017210   0x70019710   0x00000014   Code   RO         4688    .text.rom_api_init  zf_rom_api.o
-    0x80017224   0x70019724   0x00000004   PAD
-    0x80017228   0x70019728   0x00000052   Code   RO         4861    .text.systick_delay  zf_systick.o
-    0x8001727a   0x7001977a   0x00000006   PAD
-    0x80017280   0x70019780   0x0000003a   Code   RO         4873    .text.systick_delay_ms  zf_systick.o
-    0x800172ba   0x700197ba   0x00000006   PAD
-    0x800172c0   0x700197c0   0x00000098   Code   RO         4901    .text.uart_init     zf_uart.o
-    0x80017358   0x70019858   0x000003f8   Code   RO         4899    .text.uart_iomuxc   zf_uart.o
-    0x80017750   0x70019c50   0x00000028   Code   RO         6024    i.__0sprintf        mc_w.l(printfa.o)
-    0x80017778   0x70019c78   0x00000030   Code   RO         6101    i.__ARM_fpclassify  m_wv.l(fpclassify.o)
-    0x800177a8   0x70019ca8   0x000000c0   Code   RO         5972    i.__hardfp_modf     m_wv.l(modf.o)
-    0x80017868   0x70019d68   0x000008c4   Code   RO         5978    i.__hardfp_pow      m_wv.l(pow.o)
-    0x8001812c   0x7001a62c   0x00000070   Code   RO         6103    i.__kernel_poly     m_wv.l(poly.o)
-    0x8001819c   0x7001a69c   0x00000004   PAD
-    0x800181a0   0x7001a6a0   0x00000018   Code   RO         6081    i.__mathlib_dbl_divzero  m_wv.l(dunder.o)
-    0x800181b8   0x7001a6b8   0x00000006   Code   RO         6083    i.__mathlib_dbl_infnan2  m_wv.l(dunder.o)
-    0x800181be   0x7001a6be   0x00000002   PAD
-    0x800181c0   0x7001a6c0   0x00000018   Code   RO         6084    i.__mathlib_dbl_invalid  m_wv.l(dunder.o)
-    0x800181d8   0x7001a6d8   0x00000018   Code   RO         6085    i.__mathlib_dbl_overflow  m_wv.l(dunder.o)
-    0x800181f0   0x7001a6f0   0x00000018   Code   RO         6087    i.__mathlib_dbl_underflow  m_wv.l(dunder.o)
-    0x80018208   0x7001a708   0x0000000c   Code   RO         6147    i.__set_errno       mc_w.l(errno.o)
-    0x80018214   0x7001a714   0x00000184   Code   RO         6029    i._fp_digits        mc_w.l(printfa.o)
-    0x80018398   0x7001a898   0x000006dc   Code   RO         6030    i._printf_core      mc_w.l(printfa.o)
-    0x80018a74   0x7001af74   0x00000024   Code   RO         6031    i._printf_post_padding  mc_w.l(printfa.o)
-    0x80018a98   0x7001af98   0x0000002e   Code   RO         6032    i._printf_pre_padding  mc_w.l(printfa.o)
-    0x80018ac6   0x7001afc6   0x0000000a   Code   RO         6034    i._sputc            mc_w.l(printfa.o)
-    0x80018ad0   0x7001afd0   0x00000018   Code   RO         6097    i.fabs              m_wv.l(fabs.o)
-    0x80018ae8   0x7001afe8   0x0000006a   Code   RO         6108    i.sqrt              m_wv.l(sqrt.o)
-    0x80018b52   0x7001b052   0x00000006   PAD
-    0x80018b58   0x7001b058   0x00000088   Data   RO         5981    .constdata          m_wv.l(pow.o)
-    0x80018be0   0x7001b0e0   0x00000008   Data   RO         6105    .constdata          m_wv.l(qnan.o)
-    0x80018be8   0x7001b0e8   0x00000008   Data   RO           57    .rodata.armPllConfig_BOARD_BootClockRUN  clock_config.o
-    0x80018bf0   0x7001b0f0   0x00000010   Data   RO          565    .rodata.cst16       fsl_clock.o
-    0x80018c00   0x7001b100   0x00000024   Data   RO          205    .rodata.s_LpuartAdapterBase  lpuart_adapter.o
-    0x80018c24   0x7001b124   0x0000000c   Data   RO         1176    .rodata.s_enetBases  fsl_enet.o
-    0x80018c30   0x7001b130   0x00000028   Data   RO         2055    .rodata.s_gpioBases  fsl_gpio.o
-    0x80018c58   0x7001b158   0x0000000c   Data   RO         2053    .rodata.s_gpioClock  fsl_gpio.o
-    0x80018c64   0x7001b164   0x0000000c   Data   RO         2086    .rodata.s_gptBases  fsl_gpt.o
-    0x80018c70   0x7001b170   0x00000006   Data   RO         2085    .rodata.s_gptClocks  fsl_gpt.o
-    0x80018c76   0x7001b176   0x00000002   PAD
-    0x80018c78   0x7001b178   0x00000024   Data   RO         2557    .rodata.s_lpuartBases  fsl_lpuart.o
-    0x80018c9c   0x7001b19c   0x00000012   Data   RO         2559    .rodata.s_lpuartClock  fsl_lpuart.o
-    0x80018cae   0x7001b1ae   0x00000002   PAD
-    0x80018cb0   0x7001b1b0   0x00000004   Data   RO         2621    .rodata.s_pitBases  fsl_pit.o
-    0x80018cb4   0x7001b1b4   0x00000002   Data   RO         2620    .rodata.s_pitClocks  fsl_pit.o
-    0x80018cb6   0x7001b1b6   0x00000002   PAD
-    0x80018cb8   0x7001b1b8   0x00000014   Data   RO         2679    .rodata.s_pwmBases  fsl_pwm.o
-    0x80018ccc   0x7001b1cc   0x00000028   Data   RO         2678    .rodata.s_pwmClocks  fsl_pwm.o
-    0x80018cf4   0x7001b1f4   0x0000000c   Data   RO         3558    .rodata.s_usdhcBase  fsl_usdhc.o
-    0x80018d00   0x7001b200   0x0000005c   Data   RO           60    .rodata.str1.1      clock_config.o
-    0x80018d5c   0x7001b25c   0x00000082   Data   RO          160    .rodata.str1.1      serial_manager.o
-    0x80018dde   0x7001b2de   0x00000058   Data   RO          181    .rodata.str1.1      serial_port_uart.o
-    0x80018e36   0x7001b336   0x000000ae   Data   RO          204    .rodata.str1.1      lpuart_adapter.o
-    0x80018ee4   0x7001b3e4   0x00000046   Data   RO          564    .rodata.str1.1      fsl_clock.o
-    0x80018f2a   0x7001b42a   0x00000073   Data   RO          991    .rodata.str1.1      fsl_edma.o
-    0x80018f9d   0x7001b49d   0x00000053   Data   RO         1177    .rodata.str1.1      fsl_enet.o
-    0x80018ff0   0x7001b4f0   0x00000084   Data   RO         1370    .rodata.str1.1      fsl_flexcan.o
-    0x80019074   0x7001b574   0x0000005d   Data   RO         2054    .rodata.str1.1      fsl_gpio.o
-    0x800190d1   0x7001b5d1   0x000000c8   Data   RO         2084    .rodata.str1.1      fsl_gpt.o
-    0x80019199   0x7001b699   0x00000075   Data   RO         2403    .rodata.str1.1      fsl_lpspi.o
-    0x8001920e   0x7001b70e   0x0000010e   Data   RO         2558    .rodata.str1.1      fsl_lpuart.o
-    0x8001931c   0x7001b81c   0x00000051   Data   RO         2619    .rodata.str1.1      fsl_pit.o
-    0x8001936d   0x7001b86d   0x000000ab   Data   RO         2677    .rodata.str1.1      fsl_pwm.o
-    0x80019418   0x7001b918   0x00000063   Data   RO         2978    .rodata.str1.1      fsl_sai.o
-    0x8001947b   0x7001b97b   0x00000030   Data   RO         3981    .rodata.str1.1      fsl_sdmmc_host.o
-    0x800194ab   0x7001b9ab   0x00000082   Data   RO         4483    .rodata.str1.1      zf_flash.o
-    0x8001952d   0x7001ba2d   0x00000031   Data   RO         4592    .rodata.str1.1      zf_iomuxc.o
-    0x8001955e   0x7001ba5e   0x0000002f   Data   RO         4635    .rodata.str1.1      zf_pit.o
-    0x8001958d   0x7001ba8d   0x0000002c   Data   RO         4656    .rodata.str1.1      zf_pwm.o
-    0x800195b9   0x7001bab9   0x00000056   Data   RO         4890    .rodata.str1.1      zf_systick.o
-    0x8001960f   0x7001bb0f   0x0000002d   Data   RO         4924    .rodata.str1.1      zf_uart.o
-    0x8001963c   0x7001bb3c   0x00000006   Data   RO         5316    .rodata.str1.1      seekfree_ips200_parallel8.o
-    0x80019642   0x7001bb42   0x0000002b   Data   RO         5632    .rodata.str1.1      fsl_assert.o
-    0x8001966d   0x7001bb6d   0x00000087   Data   RO         5669    .rodata.str1.1      fsl_debug_console.o
-    0x800196f4   0x7001bbf4   0x00000006   Data   RO         5945    .rodata.str1.1      menu_2init.o
-    0x800196fa   0x7001bbfa   0x000005f0   Data   RO         5045    .rodata.tft_ascii   seekfree_font.o
+    0x800164e0   0x700189e0   0x0000021a   Code   RO         5959    .text.para_reset    para_flash.o
+    0x800166fa   0x70018bfa   0x00000006   PAD
+    0x80016700   0x70018c00   0x00000214   Code   RO         5963    .text.paraflash_init  para_flash.o
+    0x80016914   0x70018e14   0x00000004   PAD
+    0x80016918   0x70018e18   0x00000036   Code   RO         4631    .text.pit_close     zf_pit.o
+    0x8001694e   0x70018e4e   0x00000002   PAD
+    0x80016950   0x70018e50   0x0000002e   Code   RO         4601    .text.pit_init      zf_pit.o
+    0x8001697e   0x70018e7e   0x00000002   PAD
+    0x80016980   0x70018e80   0x00000060   Code   RO         4605    .text.pit_interrupt  zf_pit.o
+    0x800169e0   0x70018ee0   0x000002f8   Code   RO         4646    .text.pwm_init      zf_pwm.o
+    0x80016cd8   0x700191d8   0x000004e8   Code   RO         4644    .text.pwm_iomuxc    zf_pwm.o
+    0x800171c0   0x700196c0   0x00000048   Code   RO         4810    .text.rom_api_flexspi_nor_flash_erase  zf_rom_api.o
+    0x80017208   0x70019708   0x00000048   Code   RO         4804    .text.rom_api_flexspi_nor_flash_page_program  zf_rom_api.o
+    0x80017250   0x70019750   0x0000003e   Code   RO         4808    .text.rom_api_flexspi_nor_get_config  zf_rom_api.o
+    0x8001728e   0x7001978e   0x00000002   PAD
+    0x80017290   0x70019790   0x00000014   Code   RO         4688    .text.rom_api_init  zf_rom_api.o
+    0x800172a4   0x700197a4   0x00000004   PAD
+    0x800172a8   0x700197a8   0x00000052   Code   RO         4861    .text.systick_delay  zf_systick.o
+    0x800172fa   0x700197fa   0x00000006   PAD
+    0x80017300   0x70019800   0x0000003a   Code   RO         4873    .text.systick_delay_ms  zf_systick.o
+    0x8001733a   0x7001983a   0x00000006   PAD
+    0x80017340   0x70019840   0x00000098   Code   RO         4901    .text.uart_init     zf_uart.o
+    0x800173d8   0x700198d8   0x000003f8   Code   RO         4899    .text.uart_iomuxc   zf_uart.o
+    0x800177d0   0x70019cd0   0x00000028   Code   RO         6026    i.__0sprintf        mc_w.l(printfa.o)
+    0x800177f8   0x70019cf8   0x00000030   Code   RO         6103    i.__ARM_fpclassify  m_wv.l(fpclassify.o)
+    0x80017828   0x70019d28   0x000000c0   Code   RO         5974    i.__hardfp_modf     m_wv.l(modf.o)
+    0x800178e8   0x70019de8   0x000008c4   Code   RO         5980    i.__hardfp_pow      m_wv.l(pow.o)
+    0x800181ac   0x7001a6ac   0x00000070   Code   RO         6105    i.__kernel_poly     m_wv.l(poly.o)
+    0x8001821c   0x7001a71c   0x00000004   PAD
+    0x80018220   0x7001a720   0x00000018   Code   RO         6083    i.__mathlib_dbl_divzero  m_wv.l(dunder.o)
+    0x80018238   0x7001a738   0x00000006   Code   RO         6085    i.__mathlib_dbl_infnan2  m_wv.l(dunder.o)
+    0x8001823e   0x7001a73e   0x00000002   PAD
+    0x80018240   0x7001a740   0x00000018   Code   RO         6086    i.__mathlib_dbl_invalid  m_wv.l(dunder.o)
+    0x80018258   0x7001a758   0x00000018   Code   RO         6087    i.__mathlib_dbl_overflow  m_wv.l(dunder.o)
+    0x80018270   0x7001a770   0x00000018   Code   RO         6089    i.__mathlib_dbl_underflow  m_wv.l(dunder.o)
+    0x80018288   0x7001a788   0x0000000c   Code   RO         6149    i.__set_errno       mc_w.l(errno.o)
+    0x80018294   0x7001a794   0x00000184   Code   RO         6031    i._fp_digits        mc_w.l(printfa.o)
+    0x80018418   0x7001a918   0x000006dc   Code   RO         6032    i._printf_core      mc_w.l(printfa.o)
+    0x80018af4   0x7001aff4   0x00000024   Code   RO         6033    i._printf_post_padding  mc_w.l(printfa.o)
+    0x80018b18   0x7001b018   0x0000002e   Code   RO         6034    i._printf_pre_padding  mc_w.l(printfa.o)
+    0x80018b46   0x7001b046   0x0000000a   Code   RO         6036    i._sputc            mc_w.l(printfa.o)
+    0x80018b50   0x7001b050   0x00000018   Code   RO         6099    i.fabs              m_wv.l(fabs.o)
+    0x80018b68   0x7001b068   0x0000006a   Code   RO         6110    i.sqrt              m_wv.l(sqrt.o)
+    0x80018bd2   0x7001b0d2   0x00000006   PAD
+    0x80018bd8   0x7001b0d8   0x00000088   Data   RO         5983    .constdata          m_wv.l(pow.o)
+    0x80018c60   0x7001b160   0x00000008   Data   RO         6107    .constdata          m_wv.l(qnan.o)
+    0x80018c68   0x7001b168   0x00000008   Data   RO           57    .rodata.armPllConfig_BOARD_BootClockRUN  clock_config.o
+    0x80018c70   0x7001b170   0x00000010   Data   RO          565    .rodata.cst16       fsl_clock.o
+    0x80018c80   0x7001b180   0x00000024   Data   RO          205    .rodata.s_LpuartAdapterBase  lpuart_adapter.o
+    0x80018ca4   0x7001b1a4   0x0000000c   Data   RO         1176    .rodata.s_enetBases  fsl_enet.o
+    0x80018cb0   0x7001b1b0   0x00000028   Data   RO         2055    .rodata.s_gpioBases  fsl_gpio.o
+    0x80018cd8   0x7001b1d8   0x0000000c   Data   RO         2053    .rodata.s_gpioClock  fsl_gpio.o
+    0x80018ce4   0x7001b1e4   0x0000000c   Data   RO         2086    .rodata.s_gptBases  fsl_gpt.o
+    0x80018cf0   0x7001b1f0   0x00000006   Data   RO         2085    .rodata.s_gptClocks  fsl_gpt.o
+    0x80018cf6   0x7001b1f6   0x00000002   PAD
+    0x80018cf8   0x7001b1f8   0x00000024   Data   RO         2557    .rodata.s_lpuartBases  fsl_lpuart.o
+    0x80018d1c   0x7001b21c   0x00000012   Data   RO         2559    .rodata.s_lpuartClock  fsl_lpuart.o
+    0x80018d2e   0x7001b22e   0x00000002   PAD
+    0x80018d30   0x7001b230   0x00000004   Data   RO         2621    .rodata.s_pitBases  fsl_pit.o
+    0x80018d34   0x7001b234   0x00000002   Data   RO         2620    .rodata.s_pitClocks  fsl_pit.o
+    0x80018d36   0x7001b236   0x00000002   PAD
+    0x80018d38   0x7001b238   0x00000014   Data   RO         2679    .rodata.s_pwmBases  fsl_pwm.o
+    0x80018d4c   0x7001b24c   0x00000028   Data   RO         2678    .rodata.s_pwmClocks  fsl_pwm.o
+    0x80018d74   0x7001b274   0x0000000c   Data   RO         3558    .rodata.s_usdhcBase  fsl_usdhc.o
+    0x80018d80   0x7001b280   0x0000005c   Data   RO           60    .rodata.str1.1      clock_config.o
+    0x80018ddc   0x7001b2dc   0x00000082   Data   RO          160    .rodata.str1.1      serial_manager.o
+    0x80018e5e   0x7001b35e   0x00000058   Data   RO          181    .rodata.str1.1      serial_port_uart.o
+    0x80018eb6   0x7001b3b6   0x000000ae   Data   RO          204    .rodata.str1.1      lpuart_adapter.o
+    0x80018f64   0x7001b464   0x00000046   Data   RO          564    .rodata.str1.1      fsl_clock.o
+    0x80018faa   0x7001b4aa   0x00000073   Data   RO          991    .rodata.str1.1      fsl_edma.o
+    0x8001901d   0x7001b51d   0x00000053   Data   RO         1177    .rodata.str1.1      fsl_enet.o
+    0x80019070   0x7001b570   0x00000084   Data   RO         1370    .rodata.str1.1      fsl_flexcan.o
+    0x800190f4   0x7001b5f4   0x0000005d   Data   RO         2054    .rodata.str1.1      fsl_gpio.o
+    0x80019151   0x7001b651   0x000000c8   Data   RO         2084    .rodata.str1.1      fsl_gpt.o
+    0x80019219   0x7001b719   0x00000075   Data   RO         2403    .rodata.str1.1      fsl_lpspi.o
+    0x8001928e   0x7001b78e   0x0000010e   Data   RO         2558    .rodata.str1.1      fsl_lpuart.o
+    0x8001939c   0x7001b89c   0x00000051   Data   RO         2619    .rodata.str1.1      fsl_pit.o
+    0x800193ed   0x7001b8ed   0x000000ab   Data   RO         2677    .rodata.str1.1      fsl_pwm.o
+    0x80019498   0x7001b998   0x00000063   Data   RO         2978    .rodata.str1.1      fsl_sai.o
+    0x800194fb   0x7001b9fb   0x00000030   Data   RO         3981    .rodata.str1.1      fsl_sdmmc_host.o
+    0x8001952b   0x7001ba2b   0x00000082   Data   RO         4483    .rodata.str1.1      zf_flash.o
+    0x800195ad   0x7001baad   0x00000031   Data   RO         4592    .rodata.str1.1      zf_iomuxc.o
+    0x800195de   0x7001bade   0x0000002f   Data   RO         4635    .rodata.str1.1      zf_pit.o
+    0x8001960d   0x7001bb0d   0x0000002c   Data   RO         4656    .rodata.str1.1      zf_pwm.o
+    0x80019639   0x7001bb39   0x00000056   Data   RO         4890    .rodata.str1.1      zf_systick.o
+    0x8001968f   0x7001bb8f   0x0000002d   Data   RO         4924    .rodata.str1.1      zf_uart.o
+    0x800196bc   0x7001bbbc   0x00000006   Data   RO         5316    .rodata.str1.1      seekfree_ips200_parallel8.o
+    0x800196c2   0x7001bbc2   0x0000002b   Data   RO         5632    .rodata.str1.1      fsl_assert.o
+    0x800196ed   0x7001bbed   0x00000087   Data   RO         5669    .rodata.str1.1      fsl_debug_console.o
+    0x80019774   0x7001bc74   0x00000006   Data   RO         5945    .rodata.str1.1      menu_2init.o
+    0x8001977a   0x7001bc7a   0x000005f0   Data   RO         5045    .rodata.tft_ascii   seekfree_font.o
 
 
-    Execution Region SDRAM_ncache (Exec base: 0x81e00000, Load base: 0x7001ca60, Size: 0x00000000, Max: 0x00200000, ABSOLUTE)
+    Execution Region SDRAM_ncache (Exec base: 0x81e00000, Load base: 0x7001cae0, Size: 0x00000000, Max: 0x00200000, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -14896,7 +14913,7 @@ Image component sizes
       3176          6          0          4          4       2793   menu.o
       6148         36          0         22         50       5084   menu_2.o
       3030         50          6         16         22       4969   menu_2init.o
-      1316          0          0          0          0       1896   para_flash.o
+      1440          0          0          0          0       2419   para_flash.o
          0          0       1520          0          0        808   seekfree_font.o
       2702          0          6          4          0      12894   seekfree_ips200_parallel8.o
         86          0          0          0          0      19725   seekfree_mt9v03x.o
@@ -14919,9 +14936,9 @@ Image component sizes
         36          0          0          0         16      16923   zf_usb_cdc.o
 
     ----------------------------------------------------------------------
-     94478        916       7060       2700       8528     723771   Object Totals
+     94606        916       7060       2700       8528     724294   Object Totals
          0          0         48          0       6144          0   (incl. Generated)
-       842          0          8          2         16          0   (incl. Padding)
+       846          0          8          2         16          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -14990,15 +15007,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-    101416       1338       7204       2704       8528     724947   Grand Totals
-    101416       1338       7204       2164       8528     724947   ELF Image Totals (compressed)
-    101416       1338       7204       2164          0          0   ROM Totals
+    101544       1338       7204       2704       8528     725470   Grand Totals
+    101544       1338       7204       2164       8528     725470   ELF Image Totals (compressed)
+    101544       1338       7204       2164          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)               108620 ( 106.07kB)
+    Total RO  Size (Code + RO Data)               108748 ( 106.20kB)
     Total RW  Size (RW Data + ZI Data)             11232 (  10.97kB)
-    Total ROM Size (Code + RO Data + RW Data)     110784 ( 108.19kB)
+    Total ROM Size (Code + RO Data + RW Data)     110912 ( 108.31kB)
 
 ==============================================================================
 

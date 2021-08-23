@@ -15,7 +15,6 @@
 //	功能定义
 #define FUNCTION 5
 #define ORING_VALUE 6
-#define FLASH_WRITE 7
 #define MONITOR_ON 6
 #define MONITOR_OFF 7
 /*------------------------------------------------------*/
