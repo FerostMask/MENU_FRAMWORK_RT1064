@@ -2,7 +2,7 @@
 
 *本项目基于逐飞RT1064开源库进行开发*
 
-![IMG_20210824_155303](https://raw.githubusercontent.com/FerostMask/Photos_repository/master/IMG_20210824_021735.jpg)
+![IMG_20210824_021746](https://raw.githubusercontent.com/FerostMask/Photos_repository/master/IMG_20210824_155303.jpg)
 
 我是16届智能车双车组的参赛选手，主要负责软件方面的工作。我在准备比赛的过程中发现，参数调整在整个备赛过程中的时间占比非常大，所以一个便于调参、功能丰富的菜单实现非常重要。于是我根据日常调参的需求制作了这套菜单。
 
@@ -21,7 +21,7 @@
 
 >   二级菜单 - 参数修改
 
-![IMG_20210824_165033](https://raw.githubusercontent.com/FerostMask/Photos_repository/master/IMG_20210824_021746.jpg)
+![IMG_20210824_021735](https://raw.githubusercontent.com/FerostMask/Photos_repository/master/IMG_20210824_165033.jpg)
 
 参数修改二级菜单是本项目的一个重要功能，它主要实现了参数修改、保存功能。
 
@@ -33,7 +33,9 @@
 
 >   二级菜单 - 按钮切换
 
-![IMG_20210824_021735](https://raw.githubusercontent.com/FerostMask/Photos_repository/master/IMG_20210824_165033.jpg)
+![IMG_20210824_155303](https://raw.githubusercontent.com/FerostMask/Photos_repository/master/IMG_20210824_021735.jpg)
+
+
 
 按钮切换功能菜单主要用于实现需要启动停止或单次触发的功能，例如显示摄像头采集图像、二值化图像，还原参数等。
 
@@ -43,7 +45,7 @@
 
 >   二级菜单 - 监视器
 
-![IMG_20210824_021746](https://raw.githubusercontent.com/FerostMask/Photos_repository/master/IMG_20210824_155303.jpg)
+![IMG_20210824_165033](https://raw.githubusercontent.com/FerostMask/Photos_repository/master/IMG_20210824_021746.jpg)
 
 监视器菜单用于实时显示一些变量，这项功能在检查各类元器件是否正常工作时起到非常大的作用。
 
