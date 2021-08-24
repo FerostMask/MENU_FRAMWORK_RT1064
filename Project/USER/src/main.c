@@ -50,7 +50,6 @@ int main(void){
 /*	 	 用户初始化		*/
 /*======================*/
 //	pit_interrupt_ms(PIT_CH0, 1000);
-//	Init_para();
 	paraflash_init();
 	Init_button();
 	Init_motor();
@@ -64,7 +63,10 @@ int main(void){
     while (1){
 	//	此处编写需要循环执行的代码
 		if(mt9v03x_csi_finish_flag){
-
+			otsu();
+			img_binary();
+			if(csimenu_flag[0]) binary_disp();
+			if(csimenu_flag[1]) ips200_displayimage032(mt9v03x_csi_image[0], MT9V03X_CSI_W, MT9V03X_CSI_H);
 		}
     }
 }
