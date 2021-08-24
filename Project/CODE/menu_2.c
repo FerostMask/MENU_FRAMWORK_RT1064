@@ -272,7 +272,6 @@ void menu2_init(void){
 //	加载菜单属性
 	for(i = 0; i < menu_index; i++) calindex += colimit[i];
     calindex += menu[menu_index];
-//	ips200_showint16(0, 0, index);
 	amenu2_init_pfc[calindex](0);
 //	初始化菜单
 	switch(menu2_mode){

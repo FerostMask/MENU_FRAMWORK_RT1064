@@ -77,6 +77,9 @@ void para_reset(char saveflag){//saveflag: 是否存储
 		flash_erase_sector(FLASH_MEMORY_SLECTION);//清除扇区
 		for(i = 0; i < 4; i++) flash_page_program(FLASH_MEMORY_SLECTION, i, &flash_memory[64*i], 64);//存入数据
 	}
+//	返回二级菜单
+	amenu2_init_pfc[calindex](0);
+	menu2_limit -= 1;//该函数由按钮切换菜单调用，故索引-1
 }
 /*----------------------*/
 /*	   保存全部参数		*/
@@ -101,9 +104,12 @@ void para_saveall(void){
 			}
 		}
 	}
-	//	将数组存入flash
-		flash_erase_sector(FLASH_MEMORY_SLECTION);//清除扇区
-		for(i = 0; i < 4; i++) flash_page_program(FLASH_MEMORY_SLECTION, i, &flash_memory[64*i], 64);//存入数据
+//	将数组存入flash
+	flash_erase_sector(FLASH_MEMORY_SLECTION);//清除扇区
+	for(i = 0; i < 4; i++) flash_page_program(FLASH_MEMORY_SLECTION, i, &flash_memory[64*i], 64);//存入数据
+//	返回二级菜单
+	amenu2_init_pfc[calindex](0);
+	menu2_limit -= 1;//该函数由按钮切换菜单调用，故索引-1
 }
 /*----------------------*/
 /*	 flash参数初始化	*/

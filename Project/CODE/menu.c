@@ -12,9 +12,9 @@
 /* 							 变量定义 							*/
 /*==============================================================*/
 //	菜单数组
-unsigned char menu[ROWS] = {0, 0, 0, 0};
+unsigned char menu[ROWS] = {0};
 //	阈值数组
-unsigned char colimit[ROWS] = { 1,
+unsigned char colimit[ROWS] = { 2,
 								1,
 								1,
 								1 };
@@ -34,7 +34,7 @@ static char info(char index, char num){
 	register unsigned char i;
 //	行索引
 	switch(index){
-		case MENU_SWITCH:
+		case 0:
 		//	列索引
 			switch(num){
 			//	按键逻辑
@@ -44,11 +44,11 @@ static char info(char index, char num){
 					for(i = 0; i < 32; i++) nom[64+i] = xian0[i];
 					for(i = 0; i < 32; i++) nom[96+i] = shi1[i];
 					return 4;
-				case 1://发车
+				case 2://发车
 					for(i = 0; i < 32; i++) nom[i] = fa0[i];
 					for(i = 0; i < 32; i++) nom[32+i] = che0[i];
 					return 2;
-				case 2://参数设置
+				case 1://参数设置
 					for(i = 0; i < 32; i++) nom[i] = can0[i];
 					for(i = 0; i < 32; i++) nom[32+i] = shu0[i];
 					for(i = 0; i < 32; i++) nom[64+i] = she0[i];
@@ -56,7 +56,7 @@ static char info(char index, char num){
 					return 4;
 			}
 			break;
-		case PARASET_PID:
+		case 1:
 			switch(num){
 			//	参数修改逻辑
 				case 0://转向
@@ -75,7 +75,7 @@ static char info(char index, char num){
 					return 4;
 			}
 			break;
-		case PARASET_OPER:
+		case 2:
 			switch(num){
 			//	姿态修改逻辑
 				case 0://姿态
@@ -90,7 +90,7 @@ static char info(char index, char num){
 					return 4;
 			}
 			break;
-		case MONITOR_MENU:
+		case 3:
 			switch(num){
 			//	监视器逻辑
 				case 0://误差监视

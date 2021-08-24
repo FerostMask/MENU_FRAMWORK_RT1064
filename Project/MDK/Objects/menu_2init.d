@@ -27,4 +27,5 @@
   ..\..\Libraries\nxp_libraries\drives\fsl_edma.h \
   ..\..\Libraries\seekfree_libraries\zf_uart.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_lpuart.h \
-  ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X_CSI.h
+  ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X_CSI.h \
+  ..\CODE\para_flash.h

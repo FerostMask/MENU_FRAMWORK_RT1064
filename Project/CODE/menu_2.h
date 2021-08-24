@@ -21,6 +21,7 @@
 /*						±äÁ¿ÉùÃ÷						*/
 /*======================================================*/
 extern char menu2_limit;
+extern short calindex;
 extern unsigned char menu2_mode;
 extern unsigned char magflag;
 extern unsigned char *swflag;

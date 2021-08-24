@@ -7,6 +7,7 @@
 #include "menu_2.h"
 #include "string.h"
 #include "data.h"
+#include "para_flash.h"
 /*--------------------------------------------------------------*/
 /* 							 函数定义 							*/
 /*==============================================================*/
@@ -168,6 +169,50 @@ char menu2_imgdisplay(char index){
 	return 0;
 }
 /*------------------------------*/
+/*		   	 参数设置			*/
+/*==============================*/
+char menu2_flashmemory(char index){
+//	变量定义及初始化
+	register unsigned char i;
+	dis_str = 0;
+//	信息索引
+	switch(index){
+	//	菜单属性初始化
+		case 0:
+			menu2_mode = BUTTONSW;
+			menu2_limit = 2;
+			magflag = 0;
+			swclearflag = 1;
+		//	标志位数组
+			swflag = flash_memory_flag;
+			return 0;
+	//	菜单名称初始化
+		case 1://参数保存
+			for(i = 0; i < 32; i++) nom[i] = can0[i];
+			for(i = 0; i < 32; i++) nom[32+i] = shu0[i];
+			for(i = 0; i < 32; i++) nom[64+i] = bao0[i];
+			for(i = 0; i < 32; i++) nom[96+i] = cun0[i];
+			return 4;
+		case 2://参数还原
+			for(i = 0; i < 32; i++) nom[i] = can0[i];
+			for(i = 0; i < 32; i++) nom[32+i] = shu0[i];
+			for(i = 0; i < 32; i++) nom[64+i] = huan0[i];
+			for(i = 0; i < 32; i++) nom[96+i] = yuan0[i];
+			return 4;
+		case FUNCTION://按键功能执行
+			switch(menu2_index){
+				case 0:
+					para_saveall();
+					break;
+				case 1:
+					para_reset(0);
+					break;
+			}
+			return 0;
+	}
+	return 0;
+}
+/*------------------------------*/
 /*		   	 转向PID			*/
 /*==============================*/
 char menu2_steeringPID(char index){
@@ -300,7 +345,7 @@ char menu2_spdmonitor(char index){//	数值修改菜单模板
 /* 							 变量定义 							*/
 /*==============================================================*/
 //	初始化函数指针数组
-char(*amenu2_init_pfc[])(char) = {	menu2_imgdisplay, 
+char(*amenu2_init_pfc[])(char) = {	menu2_imgdisplay, menu2_flashmemory, 
 									menu2_steeringPID,
 									menu2_spdctrl,
 									menu2_spdmonitor	};
