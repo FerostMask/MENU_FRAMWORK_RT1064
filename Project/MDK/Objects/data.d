@@ -25,5 +25,4 @@
   ..\..\Libraries\seekfree_libraries\zf_uart.h \
   ..\..\Libraries\nxp_libraries\drives\fsl_lpuart.h \
   ..\..\Libraries\seekfree_peripheral\SEEKFREE_MT9V03X_CSI.h \
-  ..\CODE\CAM.h ..\CODE\menu.h ..\CODE\menu_2.h ..\CODE\para_flash.h \
-  ..\CODE\ctrl_alter1.h
+  ..\CODE\CAM.h ..\CODE\menu.h ..\CODE\menu_2.h ..\CODE\para_flash.h
