@@ -44,8 +44,7 @@ int main(void){
 	pit_init();
 	flash_init();
 	ips200_init();
-//	mt9v03x_csi_init();
-	//此处编写用户代码(例如：外设初始化代码等)
+	mt9v03x_csi_init();
 /*----------------------*/
 /*	 	 用户初始化		*/
 /*======================*/
@@ -54,7 +53,6 @@ int main(void){
 	Init_button();
 	Init_motor();
 	menu_display();
-	gpio_init(B11, GPO, 1, GPIO_PIN_CONFIG);
 	//总中断最后开启
     EnableGlobalIRQ(0);
 /*--------------------------------------------------------------*/

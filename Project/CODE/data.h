@@ -125,7 +125,7 @@ extern unsigned char fixedflag;
 extern unsigned char monitorflag;
 extern unsigned char csimenu_flag[4];
 extern unsigned char run_flag[4];
-extern unsigned char flash_memory_flag[4];
+extern unsigned char fm_flag[4];
 extern unsigned char excollflag;
 extern unsigned char menu_level;
 extern short *monitor_sv[5];

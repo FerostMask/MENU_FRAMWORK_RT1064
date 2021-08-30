@@ -418,6 +418,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>menu2_limit</ItemText>
         </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>flash_memory_flag</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>

@@ -8,10 +8,6 @@
 /*======================================================*/
 //	一级菜单
 #define ROWS 4//行数
-#define menu_limit0 2
-#define menu_limit1 1
-#define menu_limit2 1
-#define menu_limit3 1
 //	菜单属性编号
 #define MENU_SWITCH 0
 #define PARASET_PID 1

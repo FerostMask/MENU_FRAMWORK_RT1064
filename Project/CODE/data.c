@@ -99,7 +99,7 @@ unsigned char fixedflag = 0;//固定显示
 unsigned char monitorflag = 0;//监视器
 unsigned char csimenu_flag[4] = {0};//摄像头
 unsigned char run_flag[4] = {0};//发车
-unsigned char flash_memory_flag[4] = {0};//数据存储
+unsigned char fm_flag[4] = {0};//数据存储
 //	指针函数
 void(*menu_pfc[])(unsigned char) = {menu_select, menu2_select};
 /*----------------------*/

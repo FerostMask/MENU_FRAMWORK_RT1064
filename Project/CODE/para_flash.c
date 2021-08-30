@@ -53,21 +53,23 @@ long int ex_float2int(float value){
 /*======================*/
 void para_reset(char saveflag){//saveflag: 是否存储
 //	变量定义
-	register short i;
+	register short i, j;
 	short lom = 0;
 	for(i = 0; i < ROWS; i++) lom += colimit[i];
+	ips200_showuint16(0, 0, lom);
 //	重新初始化参数
 	for(i = 0; i < lom; i++){
+		ips200_showuint16(0, 1, i);
 		amenu2_init_pfc[i](0);//菜单初始化
 		if(menu2_mode == PARASET_F || menu2_mode == PARASET_S){
 			amenu2_init_pfc[i](ORING_VALUE);//初始化参数值
 		//	将参数写入数组
 			switch(menu2_mode){
 				case PARASET_F:
-					for(i = 0; i < menu2_limit; i++) flash_memory[flash_index*5+i] = ex_float2int(*floatvalue[i]);
+					for(j = 0; j < menu2_limit; j++) flash_memory[flash_index*5+j] = ex_float2int(*floatvalue[j]);
 					break;
 				case PARASET_S:
-					for(i = 0; i < menu2_limit; i++) flash_memory[flash_index*5+i] = ex_float2int(*shortvalue[i]);
+					for(j = 0; j < menu2_limit; j++) flash_memory[flash_index*5+j] = ex_float2int(*shortvalue[j]);
 					break;
 			}
 		}

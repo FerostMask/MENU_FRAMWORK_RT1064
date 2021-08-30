@@ -169,6 +169,42 @@ char menu2_imgdisplay(char index){
 	return 0;
 }
 /*------------------------------*/
+/*		   	   发车				*/
+/*==============================*/
+char menu2_start(char index){//	按钮切换模板
+//	变量定义及初始化
+	register unsigned char i;
+	dis_str = 0;//排版问题，不推荐使用字母
+//	信息索引
+	switch(index){
+	//	菜单属性初始化
+		case 0:
+		//	菜单属性
+			menu2_mode = BUTTONSW;
+			menu2_limit = 1;
+			magflag = 0;
+			swclearflag = 1;//是否清除其他非选标志位
+		//	标志位数组
+			swflag = run_flag;
+			return 0;
+	//	菜单名称初始化
+		case 1://延时发车
+			for(i = 0; i < 32; i++) nom[i] = yan0[i];
+			for(i = 0; i < 32; i++) nom[32+i] = shi2[i];
+			for(i = 0; i < 32; i++) nom[64+i] = fa0[i];
+			for(i = 0; i < 32; i++) nom[96+i] = che0[i];
+			return 4;//返回字数
+	//	按键执行功能 | 因为排版问题单页只支持四个按键
+		case FUNCTION:
+			switch(menu2_index){
+				case 0://第一行按键功能
+					break;
+			}
+			return 0;
+	}
+	return 0;
+}
+/*------------------------------*/
 /*		   	 参数设置			*/
 /*==============================*/
 char menu2_flashmemory(char index){
@@ -184,7 +220,7 @@ char menu2_flashmemory(char index){
 			magflag = 0;
 			swclearflag = 1;
 		//	标志位数组
-			swflag = flash_memory_flag;
+			swflag = &fm_flag[0];
 			return 0;
 	//	菜单名称初始化
 		case 1://参数保存
@@ -208,6 +244,45 @@ char menu2_flashmemory(char index){
 					para_reset(0);
 					break;
 			}
+			return 0;
+	}
+	return 0;
+}
+/*------------------------------*/
+/*		 	 模糊PID			*/
+/*==============================*/
+char menu2_PIDfuzzy(char index){//	数值修改菜单模板
+//	变量定义及初始化
+	register unsigned char i;
+	dis_str = 1;//是否使用字母显示
+//	信息索引
+	switch(index){
+	//	菜单属性初始化
+		case 0:
+		//	菜单属性
+			menu2_mode = PARASET_F;
+			menu2_limit = 3;
+			magflag = 1;
+		//	修改数值的地址
+			floatvalue[0] = &cam_steering.ei;
+			floatvalue[1] = &cam_steering.e_bias;
+			floatvalue[2] = &cam_steering.eci;
+			flash_index = 2;//数值的flash地址
+			return 0;
+	//	菜单名称初始化
+		case 1://第一个参数 | 字母样例
+			strcpy(menustr, "ei");
+			return 0;
+		case 2://第一个参数 | 字母样例
+			strcpy(menustr, "e_bias");
+			return 0;
+		case 3://第一个参数 | 字母样例
+			strcpy(menustr, "eci");
+			return 0;
+		case ORING_VALUE://设定参数初始值
+			cam_steering.ei = 10.0;
+			cam_steering.e_bias = 2.5;
+			cam_steering.eci = 15.0;
 			return 0;
 	}
 	return 0;
@@ -345,8 +420,8 @@ char menu2_spdmonitor(char index){//	数值修改菜单模板
 /* 							 变量定义 							*/
 /*==============================================================*/
 //	初始化函数指针数组
-char(*amenu2_init_pfc[])(char) = {	menu2_imgdisplay, menu2_flashmemory, 
-									menu2_steeringPID,
+char(*amenu2_init_pfc[])(char) = {	menu2_imgdisplay, menu2_flashmemory, menu2_start, 
+									menu2_steeringPID, menu2_PIDfuzzy,
 									menu2_spdctrl,
 									menu2_spdmonitor	};
 //	变量定义
