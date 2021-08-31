@@ -10,7 +10,7 @@
 
 >   视频链接：[智能车代码开源 | 基于逐飞RT1064开源库制作的菜单]([智能车代码开源 | 基于逐飞RT1064开源库制作的菜单_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV19P4y1p7dr?))
 
-<iframe src="//bilibili.com/video/BV19P4y1p7dr" scrolling="no" border="0" height="500" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+![序列 02.00_00_46_22.Still001.png](https://github.com/FerostMask/Photos_repository/blob/master/%E5%BA%8F%E5%88%97%2002.00_00_46_22.Still001.png?raw=true)
 
 ## 菜单主要功能
 
