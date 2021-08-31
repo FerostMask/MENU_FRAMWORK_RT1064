@@ -6,6 +6,12 @@
 
 我是16届智能车双车组的参赛选手，主要负责软件方面的工作。我在准备比赛的过程中发现，参数调整在整个备赛过程中的时间占比非常大，所以一个便于调参、功能丰富的菜单实现非常重要。于是我根据日常调参的需求制作了这套菜单。
 
+## 介绍视频
+
+>   视频链接：[智能车代码开源 | 基于逐飞RT1064开源库制作的菜单]([智能车代码开源 | 基于逐飞RT1064开源库制作的菜单_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV19P4y1p7dr?))
+
+<iframe src="//bilibili.com/video/BV19P4y1p7dr" scrolling="no" border="0" height="500" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 ## 菜单主要功能
 
 >   一级菜单
