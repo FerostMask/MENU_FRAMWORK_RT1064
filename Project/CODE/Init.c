@@ -34,9 +34,9 @@ void Init_encoder(void){
 void Init_motor(void){
 //	端口初始化
 //	电机引脚初始化 默认频率17kHz 初始占空比 0%
-	pwm_init(MOTOR_LS, 17000, 10000);
+	pwm_init(MOTOR_LS, 17000, 3000);
 	gpio_init(MOTOR_LD, GPO, 1, GPIO_PIN_CONFIG);
-	pwm_init(MOTOR_RS, 17000, 10000);
+	pwm_init(MOTOR_RS, 17000, 3000);
 	gpio_init(MOTOR_RD, GPO, 1, GPIO_PIN_CONFIG);
 //	舵机引脚初始化 默认频率100Hz 初始占空比 15%
 	pwm_init(STEER_PIN, 100, 1500);
